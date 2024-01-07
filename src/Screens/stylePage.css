@@ -1,0 +1,4 @@
+.custom-paper {
+  box-shadow: none !important; /* Elimină umbra */
+  text-align: right;
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="170">
+  <!-- Dreptunghi cu chenar de culoare #CCC (gri) și umplutură roșie -->
+  <rect width="100%" height="100%" stroke="#CCC" stroke-width="2" fill="#002a59" />
+
+  <!-- Text cu umplutură albă, pozitionat în centru -->
+  <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" fill="white" font-size="16">
+Spațiu pentru PDF  </text>
+</svg>
