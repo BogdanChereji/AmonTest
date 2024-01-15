@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 import { getError } from '../../utils';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { API_LINK } from '../../ApiLink.js';
+import { styled } from '@mui/material/styles';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -100,6 +101,22 @@ function ProduseCuPlasaTable() {
       }
     }
   };
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: '#fff',
+    backgroundColor: '#06386a',
+    '&:hover': {
+      backgroundColor: '#003c7f',
+    },
+  }));
 
   return (
     <TableContainer component={Paper}>
@@ -113,18 +130,15 @@ function ProduseCuPlasaTable() {
         </TableHead>
         <TableBody>
           {produse.map((produs) => (
-            <TableRow key={produs._id}>
-              <TableCell>{produs.Nume}</TableCell>
+            <StyledTableRow key={produs._id}>
+              <TableCell sx={{ maxWidth: 2 }}>{produs.Nume}</TableCell>
               <TableCell>{produs.NumeCuloare}</TableCell>
               <TableCell align="right">
-                <Button
-                  sx={{ color: 'red' }}
-                  onClick={() => deleteHandler(produs)}
-                >
-                  <HighlightOffIcon sx={{ color: 'red' }} />
-                </Button>
+                <ColorButton onClick={() => deleteHandler(produs)}>
+                  Șterge
+                </ColorButton>
               </TableCell>
-            </TableRow>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>

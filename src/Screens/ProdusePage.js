@@ -3,6 +3,7 @@ import React from 'react';
 import ProduseTable from '../components/Tables/ProduseTable';
 import { useNavigate } from 'react-router-dom';
 import ProduseCuPlasaTable from '../components/Tables/ProduseCuPlasaTable';
+import ProduseTencuibilTable from '../components/Tables/ProduseTencuibilTable';
 
 export default function ProdusePage() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function ProdusePage() {
       maxWidth="xxl"
       sx={{
         backgroundColor: '#f9f9fb',
-        height: '100vh',
+        height: '100%',
       }}
     >
       <Grid container spacing={2} mt={1}>
@@ -83,8 +84,7 @@ export default function ProdusePage() {
             }}
             variant="contained"
             color="primary"
-            disabled
-            onClick={() => navigate(`/produsnouruloualuminiusimplu`)}
+            onClick={() => navigate(`/produsnouruloutencuibil`)}
           >
             + RULOU TENCUIBIL
           </Button>
@@ -126,6 +126,12 @@ export default function ProdusePage() {
               Rulou aluminiu cu plasa
             </Typography>
             <ProduseCuPlasaTable />
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="subtitle1" style={{ color: '#06386a' }}>
+              Rulou Tencuibil
+            </Typography>
+            <ProduseTencuibilTable />
           </Box>
         </Grid>
       </Grid>

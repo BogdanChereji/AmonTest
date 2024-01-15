@@ -19,6 +19,8 @@ import ComandaSinglePage from './Screens/ComandaSinglePage';
 import ComenziGeneralePage from './Screens/ComenziGeneralePage';
 import CreateProdusCuPlasa from './Screens/CreateProdusCuPlasaPage';
 import CalculatorRulouriAluminiuCuPlasaPage from './Screens/CalculatorRulouriAluminiuCuPlasaPage';
+import CreateProdusTencuibil from './Screens/CreateProdusTencuibilPage';
+import CalculatorRulouriTencuibilePage from './Screens/CalculatorRulouriTencuibilePage';
 
 function App() {
   return (
@@ -29,7 +31,6 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/signin" element={<SignInPage />} />
-
             {/* ProtectedRoute */}
 
             <Route
@@ -45,6 +46,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <CalculatorRulouriAluminiuCuPlasaPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/rulouritencuibile"
+              element={
+                <ProtectedRoute>
+                  <CalculatorRulouriTencuibilePage />
                 </ProtectedRoute>
               }
             />
@@ -120,6 +129,14 @@ function App() {
               element={
                 <AdminRoute>
                   <CreateProdusCuPlasa />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/produsnouruloutencuibil"
+              element={
+                <AdminRoute>
+                  <CreateProdusTencuibil />
                 </AdminRoute>
               }
             />

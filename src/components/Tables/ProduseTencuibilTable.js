@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Store } from '../../Store';
+import { Store } from '../../Store.js';
 import axios from 'axios';
 import {
   Table,
@@ -13,7 +13,7 @@ import {
   Button,
 } from '@mui/material';
 import { toast } from 'react-toastify';
-import { getError } from '../../utils';
+import { getError } from '../../utils.js';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { API_LINK } from '../../ApiLink.js';
 import { styled } from '@mui/material/styles';
@@ -53,15 +53,7 @@ const reducer = (state, action) => {
   }
 };
 
-const ColorButton = styled(Button)(({ theme }) => ({
-  backgroundColor: '#06386a',
-  '&:hover': {
-    backgroundColor: '#003c7f',
-  },
-}));
-
-function ProduseTable() {
-  const apiLink = '/api/produse';
+function ProduseTencuibilTable() {
   const { state } = useContext(Store);
   const { userInfo } = state;
   const navigate = useNavigate();
@@ -75,7 +67,7 @@ function ProduseTable() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`${API_LINK}/api/produse`, {
+        const { data } = await axios.get(`${API_LINK}/api/produsetencuibil`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
@@ -83,9 +75,7 @@ function ProduseTable() {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
     };
-
     fetchData();
-
     if (successDelete) {
       dispatch({ type: 'DELETE_REQUEST' });
     } else {
@@ -96,7 +86,7 @@ function ProduseTable() {
   const deleteHandler = async (produs) => {
     if (window.confirm('Ești sigur ca vrei să ștergi produsul?')) {
       try {
-        await axios.delete(`${API_LINK}/api/produse/${produs._id}`, {
+        await axios.delete(`${API_LINK}/api/produsetencuibil/${produs._id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         toast.success('Produsul a fost șters cu succes');
@@ -120,7 +110,6 @@ function ProduseTable() {
       border: 0,
     },
   }));
-
   const ColorButton = styled(Button)(({ theme }) => ({
     color: '#fff',
     backgroundColor: '#06386a',
@@ -142,7 +131,7 @@ function ProduseTable() {
         <TableBody>
           {produse.map((produs) => (
             <StyledTableRow key={produs._id}>
-              <TableCell>{produs.Nume}</TableCell>
+              <TableCell sx={{ maxWidth: 2 }}>{produs.Nume}</TableCell>
               <TableCell>{produs.NumeCuloare}</TableCell>
               <TableCell align="right">
                 <ColorButton onClick={() => deleteHandler(produs)}>
@@ -157,4 +146,4 @@ function ProduseTable() {
   );
 }
 
-export default ProduseTable;
+export default ProduseTencuibilTable;

@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Store } from '../../Store';
 import axios from 'axios';
 import {
@@ -16,14 +16,15 @@ import {
   AccordionDetails,
   MenuItem,
   Menu,
+  Stack,
 } from '@mui/material';
 import { toast } from 'react-toastify';
 import { getError } from '../../utils';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Fade from '@mui/material/Fade';
-import ReorderIcon from '@mui/icons-material/Reorder';
 import { API_LINK } from '../../ApiLink.js';
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { styled } from '@mui/material/styles';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -69,16 +70,6 @@ function OferteTable() {
       loading: true,
       error: '',
     });
-
-  //Deschidere meniu
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   useEffect(() => {
     const fetchDataCartInit = async () => {
@@ -135,6 +126,22 @@ function OferteTable() {
     }
   };
 
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  const ColorButton = styled(Button)(({ theme }) => ({
+    backgroundColor: '#06386a',
+    '&:hover': {
+      backgroundColor: '#003c7f',
+    },
+  }));
+
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -143,13 +150,13 @@ function OferteTable() {
             <TableCell align="left">Client</TableCell>
             <TableCell align="left">Detalii comandă </TableCell>
             <TableCell align="left">Pret</TableCell>
-            <TableCell align="center">Acțiuni</TableCell>
+            <TableCell align="left">Acțiuni</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {oferte.map((oferta) => (
             <React.Fragment key={oferta._id}>
-              <TableRow>
+              <StyledTableRow>
                 <TableCell>{oferta.client}</TableCell>
                 <TableCell>
                   {oferta.products.map((oferta) => (
@@ -217,35 +224,27 @@ function OferteTable() {
                   ))}
                 </TableCell>
                 <TableCell> {oferta.pret} EUR</TableCell>
-                <TableCell align="center">
-                  <Button
-                    id="fade-button"
-                    aria-controls={open ? 'fade-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                  >
-                    <ReorderIcon sx={{ color: '#06386a' }} />
-                  </Button>
-                  <Menu
-                    id="fade-menu"
-                    MenuListProps={{
-                      'aria-labelledby': 'fade-button',
-                    }}
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    TransitionComponent={Fade}
-                  >
-                    <MenuItem onClick={() => navigate(`/oferta/${oferta._id}`)}>
-                      Vizualizeaza
-                    </MenuItem>
-                    <MenuItem onClick={() => handleDeleteOferta(oferta)}>
-                      Șterge
-                    </MenuItem>
-                  </Menu>
+                <TableCell>
+                  <Stack spacing={2}>
+                    <ColorButton
+                      sx={{ backgroundcolor: '#06386a' }}
+                      variant="contained"
+                      dense
+                      onClick={() => navigate(`/oferta/${oferta._id}`)}
+                    >
+                      Vizualizeaza{' '}
+                    </ColorButton>
+                    <ColorButton
+                      sx={{ backgroundcolor: '#06386a' }}
+                      variant="contained"
+                      dense
+                      onClick={() => handleDeleteOferta(oferta)}
+                    >
+                      Sterge
+                    </ColorButton>{' '}
+                  </Stack>
                 </TableCell>
-              </TableRow>
+              </StyledTableRow>
             </React.Fragment>
           ))}
         </TableBody>

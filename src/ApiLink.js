@@ -1,3 +1,3 @@
-export const API_LINK = 'https://amonrltserver.onrender.com';
+export const API_LINK = '';
 
 // https://amonrltserver.onrender.com
