@@ -374,6 +374,185 @@ function CalculatorRulouriTencuibilePage() {
 
             return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
           }
+          if (inaltime > 2.9 && inaltime <= 4) {
+            let pretTotal =
+              latime * selectedProduct.D205.TocRulouTencuibil205pe90.pret +
+              latime * selectedProduct.D205.SinaTencuibilaPanelService.pret +
+              latime * selectedProduct.D205.PanelService205pe90.pret +
+              latime * selectedProduct.D205.PolistirenExtrudat.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.AxOctogonal60.pret +
+              ((parseFloat(inaltime) * 100) / 3.9) *
+                (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.LamelaAluminiu.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.LamelaTerminala.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.GarnituraDeContact.pret +
+              (parseFloat(inaltime) - 0.1) *
+                2 *
+                selectedProduct.D205.GhidajAlu.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D205.PerieGhidaj.pret +
+              1 * selectedProduct.D205.CapacLateral205pe90.pret +
+              1 * selectedProduct.D205.Fulie165.pret +
+              1 * selectedProduct.D205.Dop60.pret +
+              2 * selectedProduct.D205.Rulment.pret +
+              6 * selectedProduct.D205.Snur.pret +
+              1 * selectedProduct.D205.PalnieGhidaj.pret +
+              9 * selectedProduct.D205.OrnamentPlastic.pret +
+              1 * selectedProduct.D205.RolaPlastic.pret +
+              1 * selectedProduct.D205.ArcCilindric.pret +
+              1 * selectedProduct.D205.Automat.pret +
+              2 * selectedProduct.D205.OpritorAscuns.pret +
+              64 * selectedProduct.D205.Arriter.pret;
+
+            if (parseFloat(latime) <= 1) {
+              pretTotal += 3 * selectedProduct.D205.AgatatorCovor170.pret;
+            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
+              pretTotal += 4 * selectedProduct.D205.AgatatorCovor170.pret;
+            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
+              pretTotal += 5 * selectedProduct.D205.AgatatorCovor170.pret;
+            } else pretTotal += 6 * selectedProduct.D205.AgatatorCovor170.pret;
+
+            if (parseFloat(latime) <= 1) {
+              pretTotal += 3 * selectedProduct.D205.Inel60.pret;
+            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
+              pretTotal += 4 * selectedProduct.D205.Inel60.pret;
+            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
+              pretTotal += 5 * selectedProduct.D205.Inel60.pret;
+            } else pretTotal += 6 * selectedProduct.D205.Inel60.pret;
+
+            // // Calculations
+            // console.log(
+            //   'TocRulouTencuibil205pe90:',
+            //   latime * selectedProduct.D205.TocRulouTencuibil205pe90.pret
+            // );
+            // console.log(
+            //   'SinaTencuibilaPanelService:',
+            //   latime * selectedProduct.D205.SinaTencuibilaPanelService.pret
+            // );
+            // console.log(
+            //   'PanelService205pe90:',
+            //   latime * selectedProduct.D205.PanelService205pe90.pret
+            // );
+            // console.log(
+            //   'PolistirenExtrudat:',
+            //   latime * selectedProduct.D205.PolistirenExtrudat.pret
+            // );
+            // console.log(
+            //   'AxOctogonal60:',
+            //   (parseFloat(latime) - 0.05) *
+            //     selectedProduct.D205.AxOctogonal60.pret
+            // );
+            // console.log(
+            //   'LamelaAluminiu:',
+            //   ((parseFloat(inaltime) * 100) / 3.9) *
+            //     (parseFloat(latime) - 0.05) *
+            //     selectedProduct.D205.LamelaAluminiu.pret
+            // );
+            // console.log(
+            //   'LamelaTerminala:',
+            //   (parseFloat(latime) - 0.05) *
+            //     selectedProduct.D205.LamelaTerminala.pret
+            // );
+            // console.log(
+            //   'GarnituraDeContact:',
+            //   (parseFloat(latime) - 0.05) *
+            //     selectedProduct.D205.GarnituraDeContact.pret
+            // );
+            // console.log(
+            //   'GhidajAlu:',
+            //   (parseFloat(inaltime) - 0.1) *
+            //     2 *
+            //     selectedProduct.D205.GhidajAlu.pret
+            // );
+            // console.log(
+            //   'PerieGhidaj:',
+            //   (parseFloat(inaltime) - 0.1) *
+            //     4 *
+            //     selectedProduct.D205.PerieGhidaj.pret
+            // );
+            // console.log(
+            //   'CapacLateral205pe90:',
+            //   1 * selectedProduct.D205.CapacLateral205pe90.pret
+            // );
+            // console.log('Fulie165:', 1 * selectedProduct.D205.Fulie165.pret);
+            // console.log('Dop60:', 1 * selectedProduct.D205.Dop60.pret);
+            // console.log('Rulment:', 2 * selectedProduct.D205.Rulment.pret);
+            // console.log('Snur:', 6 * selectedProduct.D205.Snur.pret);
+            // console.log(
+            //   'PalnieGhidaj:',
+            //   1 * selectedProduct.D205.PalnieGhidaj.pret
+            // );
+            // console.log(
+            //   'OrnamentPlastic:',
+            //   9 * selectedProduct.D205.OrnamentPlastic.pret
+            // );
+            // console.log(
+            //   'RolaPlastic:',
+            //   1 * selectedProduct.D205.RolaPlastic.pret
+            // );
+            // console.log(
+            //   'ArcCilindric:',
+            //   1 * selectedProduct.D205.ArcCilindric.pret
+            // );
+            // console.log('Automat:', 1 * selectedProduct.D205.Automat.pret);
+            // console.log(
+            //   'OpritorAscuns:',
+            //   2 * selectedProduct.D205.OpritorAscuns.pret
+            // );
+            // console.log('Arriter:', 64 * selectedProduct.D205.Arriter.pret);
+
+            // // AgatatorCovor170 calculation
+            // if (parseFloat(latime) <= 1) {
+            //   console.log(
+            //     'AgatatorCovor170:',
+            //     3 * selectedProduct.D205.AgatatorCovor170.pret
+            //   );
+            //   pretTotal += 3 * selectedProduct.D205.AgatatorCovor170.pret;
+            // } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
+            //   console.log(
+            //     'AgatatorCovor170:',
+            //     4 * selectedProduct.D205.AgatatorCovor170.pret
+            //   );
+            //   pretTotal += 4 * selectedProduct.D205.AgatatorCovor170.pret;
+            // } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
+            //   console.log(
+            //     'AgatatorCovor170:',
+            //     5 * selectedProduct.D205.AgatatorCovor170.pret
+            //   );
+            //   pretTotal += 5 * selectedProduct.D205.AgatatorCovor170.pret;
+            // } else {
+            //   console.log(
+            //     'AgatatorCovor170:',
+            //     6 * selectedProduct.D205.AgatatorCovor170.pret
+            //   );
+            //   pretTotal += 6 * selectedProduct.D205.AgatatorCovor170.pret;
+            // }
+
+            // // Inel60 calculation
+            // if (parseFloat(latime) <= 1) {
+            //   console.log('Inel60:', 3 * selectedProduct.D205.Inel60.pret);
+            //   pretTotal += 3 * selectedProduct.D205.Inel60.pret;
+            // } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
+            //   console.log('Inel60:', 4 * selectedProduct.D205.Inel60.pret);
+            //   pretTotal += 4 * selectedProduct.D205.Inel60.pret;
+            // } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
+            //   console.log('Inel60:', 5 * selectedProduct.D205.Inel60.pret);
+            //   pretTotal += 5 * selectedProduct.D205.Inel60.pret;
+            // } else {
+            //   console.log('Inel60:', 6 * selectedProduct.D205.Inel60.pret);
+            //   pretTotal += 6 * selectedProduct.D205.Inel60.pret;
+            // }
+
+            // // Final Total Price
+            // console.log('Final pretTotal:', pretTotal.toFixed(2));
+            // return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+
+            return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+          }
         }
         if (checkBoxMotor) {
           if (inaltime >= 0.5 && inaltime <= 2.4) {
@@ -508,9 +687,76 @@ function CalculatorRulouriTencuibilePage() {
             }
             return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
           }
+          if (inaltime >= 2.9 && inaltime <= 4) {
+            let pretTotal =
+              latime * selectedProduct.D205.TocRulouTencuibil205pe90.pret +
+              latime * selectedProduct.D205.SinaTencuibilaPanelService.pret +
+              latime * selectedProduct.D205.PanelService205pe90.pret +
+              latime * selectedProduct.D205.PolistirenExtrudat.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.AxOctogonal60.pret +
+              ((parseFloat(inaltime) * 100) / 3.9) *
+                (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.LamelaAluminiu.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.LamelaTerminala.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.GarnituraDeContact.pret +
+              (parseFloat(inaltime) - 0.1) *
+                2 *
+                selectedProduct.D205.GhidajAlu.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D205.PerieGhidaj.pret +
+              1 * selectedProduct.D205.CapacLateral205pe90.pret +
+              1 * selectedProduct.D205.Fulie165.pret +
+              1 * selectedProduct.D205.Dop60.pret +
+              2 * selectedProduct.D205.Rulment.pret +
+              6 * selectedProduct.D205.Snur.pret +
+              1 * selectedProduct.D205.PalnieGhidaj.pret +
+              9 * selectedProduct.D205.OrnamentPlastic.pret +
+              1 * selectedProduct.D205.RolaPlastic.pret +
+              1 * selectedProduct.D205.ArcCilindric.pret +
+              1 * selectedProduct.D205.Automat.pret +
+              2 * selectedProduct.D205.OpritorAscuns.pret +
+              64 * selectedProduct.D205.Arriter.pret;
+
+            if (parseFloat(latime) <= 1) {
+              pretTotal += 3 * selectedProduct.D205.AgatatorCovor170.pret;
+            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
+              pretTotal += 4 * selectedProduct.D205.AgatatorCovor170.pret;
+            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
+              pretTotal += 5 * selectedProduct.D205.AgatatorCovor170.pret;
+            } else pretTotal += 6 * selectedProduct.D205.AgatatorCovor170.pret;
+
+            if (parseFloat(latime) <= 1) {
+              pretTotal += 3 * selectedProduct.D205.Inel60.pret;
+            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
+              pretTotal += 4 * selectedProduct.D205.Inel60.pret;
+            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
+              pretTotal += 5 * selectedProduct.D205.Inel60.pret;
+            } else pretTotal += 6 * selectedProduct.D205.Inel60.pret;
+            if (
+              selectedMotorSomfySmart === '71' ||
+              selectedMotorSomfySmart === '118' ||
+              selectedMotorSomfySmart === '80' ||
+              selectedMotorSomfySmart === '130'
+            ) {
+              pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
+            } else if (
+              selectedMotorSomfySmart === '68' ||
+              selectedMotorSomfySmart === '84' ||
+              selectedMotorSomfySmart === '85' ||
+              selectedMotorSomfySmart === '110'
+            ) {
+              pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
+            }
+            return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+          }
         }
       }
     }
+
     return 0;
   };
 

@@ -25,7 +25,7 @@ import logoBlue from '../components/Layout/logoBlue.svg'; // Înlocuiește cu ca
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { API_LINK } from '../ApiLink.js';
 import jsPDF from 'jspdf';
-
+import 'jspdf-autotable';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -37,67 +37,6 @@ const reducer = (state, action) => {
     default:
       return state;
   }
-};
-
-const generatePDF = (produse, pret) => {
-  const pdf = new jsPDF();
-  pdf.text('Detalii Comandă:', 20, 10);
-
-  produse.forEach((product, index) => {
-    const startY = 20 + index * 70;
-
-    pdf.text(`Produs: ${product.produs}`, 20, startY + 20);
-    pdf.text(`Culoare: ${product.culoare}`, 20, startY + 30);
-    pdf.text(`Înălțime: ${product.inaltime} m`, 20, startY + 40);
-    pdf.text(`Lățime: ${product.latime} m`, 20, startY + 50);
-    pdf.text('Detalii produs:', 20, startY + 60);
-
-    const detaliiStartY = startY + 70;
-
-    pdf.text(`Balcon: ${product.balcon ? 'DA' : 'NU'}`, 30, detaliiStartY);
-    pdf.text(`Actionare: ${product.actionareInterior}`, 30, detaliiStartY + 10);
-    pdf.text(
-      `Manual: ${product.bandaSnur.trim() !== '' ? product.bandaSnur : 'NU'}`,
-      30,
-      detaliiStartY + 20
-    );
-    pdf.text(
-      `Tip Motor: ${product.tipMotor.trim() !== '' ? product.tipMotor : 'NU'}`,
-      30,
-      detaliiStartY + 30
-    );
-    pdf.text(
-      `Act. Motor: ${
-        product.actionareMotor.trim() !== ''
-          ? ['68', '71', '80', '85'].includes(product.actionareMotor)
-            ? 'Întrerupător'
-            : 'Telecomandă'
-          : 'NU'
-      }`,
-      30,
-      detaliiStartY + 40
-    );
-
-    const mentiuniStartY = detaliiStartY + 50;
-
-    pdf.text('Mențiuni:', 20, mentiuniStartY);
-    pdf.text(
-      product.mentiuni ? product.mentiuni : 'Nu exista mențiuni',
-      30,
-      mentiuniStartY + 10
-    );
-
-    pdf.text(`SubTotal: ${product.pret} EUR`, 20, mentiuniStartY + 30);
-    pdf.text(
-      '---------------------------------------------',
-      20,
-      mentiuniStartY + 40
-    );
-  });
-
-  pdf.text(`TOTAL: ${pret} EUR`, 20, pdf.internal.pageSize.height - 20);
-
-  pdf.save('comanda.pdf');
 };
 
 export default function ComandaSinglePage() {
@@ -117,6 +56,69 @@ export default function ComandaSinglePage() {
   const [user, setUser] = useState('');
   const [produse, setProduse] = useState([]);
   const [username, setUsername] = useState('');
+
+  const generatePDF = () => {
+    // Creează un obiect jsPDF
+    const pdf = new jsPDF();
+
+    // Adaugă un stil elegant și un titlu
+    pdf.setFont('times', 'italic');
+    pdf.setFontSize(18);
+    pdf.text('Raport Oferta', 105, 30, 'center');
+
+    // Adaugă informațiile generale cu un font mai mic și elegant
+    pdf.setFont('times', 'normal');
+    pdf.setFontSize(12);
+    pdf.text(`Client: ${client}`, 10, 50);
+    pdf.text(`Adresa: ${adresa}`, 10, 56);
+    pdf.text(`Agent: ${username}`, 10, 62);
+
+    // Definirea coloanelor tabelului
+    const columns = [
+      'Produs',
+      'Culoare',
+      'Înaltime (m)',
+      'Latime (m)',
+      'Detalii produs',
+      'SubTotal (EUR)',
+    ];
+
+    // Maparea datelor produselor într-un format potrivit pentru autoTable
+    const data = produse.map((product) => [
+      product.produs,
+      product.culoare,
+      product.inaltime,
+      product.latime,
+      // Adaugă aici detaliile suplimentare despre produs (cum ar fi detalii despre balcon, acțiunea motorului, mențiuni etc.)
+      `\nBal. impartit:${product.balcon ? 'DA' : 'NU'}\nActionare: ${
+        product.actionareInterior
+      }\nManual: ${
+        product.bandaSnur.trim() !== '' ? product.bandaSnur : 'NU'
+      }\nTip Motor: ${
+        product.tipMotor.trim() !== '' ? product.tipMotor : 'NU'
+      }\nAct. Motor: ${
+        product.actionareMotor.trim() !== ''
+          ? ['68', '71', '80', '85'].includes(product.actionareMotor)
+            ? 'Intrerupator'
+            : 'Telecomanda'
+          : 'NU'
+      }`,
+      `${product.pret} EUR`,
+    ]);
+
+    // Adaugă tabelul la documentul PDF
+    pdf.autoTable({
+      startY: 80,
+      head: [columns],
+      body: data,
+    });
+
+    // Adaugă totalul în partea de jos a paginii
+    pdf.text(`TOTAL: ${pret} EUR`, 10, pdf.autoTable.previous.finalY + 10);
+
+    // Salvează sau afișează documentul PDF
+    pdf.save(`${username}_raport.pdf`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
