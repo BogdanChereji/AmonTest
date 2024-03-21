@@ -299,37 +299,41 @@ export default function Layout({ children }) {
             />
           </ListItem>
           <ListItem
-            disabled
-            onClick={() => navigate('#')}
+            onClick={() => navigate('/ruloutencuibilcuplasa')}
             className={
-              location.pathname === '#' ? classes.active : classes.notactive
+              location.pathname === '/ruloutencuibilcuplasa'
+                ? classes.active
+                : classes.notactive
             }
           >
             <ListItemIcon>
               <BlindsIcon
                 sx={{ color: '#fff' }}
                 className={
-                  location.pathname === '#' ? classes.active : classes.notactive
+                  location.pathname === '/ruloutencuibilcuplasa'
+                    ? classes.active
+                    : classes.notactive
                 }
               />
             </ListItemIcon>
             <ListItemText
               primary="Rulouri tencuibile cu plasă"
-              onClick={() => navigate('/rulourialuminiu')}
+              onClick={() => navigate('/ruloutencuibilcuplasa')}
             />
           </ListItem>
           <ListItem
-            disabled
-            onClick={() => navigate('/#')}
+            onClick={() => navigate('/rulourisuprapus')}
             className={
-              location.pathname === '/#' ? classes.active : classes.notactive
+              location.pathname === '/rulourisuprapus'
+                ? classes.active
+                : classes.notactive
             }
           >
             <ListItemIcon>
               <BlindsIcon
                 sx={{ color: '#fff' }}
                 className={
-                  location.pathname === '/#'
+                  location.pathname === '/rulourisuprapus'
                     ? classes.active
                     : classes.notactive
                 }
@@ -337,21 +341,22 @@ export default function Layout({ children }) {
             </ListItemIcon>
             <ListItemText
               primary="Rulouri suprapuse"
-              onClick={() => navigate('#')}
+              onClick={() => navigate('/rulourisuprapus')}
             />
           </ListItem>
           <ListItem
-            disabled
-            onClick={() => navigate('/#')}
+            onClick={() => navigate('/rulourisuprapuscuplasa')}
             className={
-              location.pathname === '/#' ? classes.active : classes.notactive
+              location.pathname === '/rulourisuprapuscuplasa'
+                ? classes.active
+                : classes.notactive
             }
           >
             <ListItemIcon>
               <BlindsIcon
                 sx={{ color: '#fff' }}
                 className={
-                  location.pathname === '/#'
+                  location.pathname === '/rulourisuprapuscuplasa'
                     ? classes.active
                     : classes.notactive
                 }
@@ -359,7 +364,7 @@ export default function Layout({ children }) {
             </ListItemIcon>
             <ListItemText
               primary="Rulouri suprapuse cu plasă"
-              onClick={() => navigate('#')}
+              onClick={() => navigate('/rulourisuprapuscuplasa')}
             />
           </ListItem>
         </List>

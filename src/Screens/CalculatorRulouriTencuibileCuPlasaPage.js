@@ -51,7 +51,7 @@ const reducer = (state, action) => {
   }
 };
 
-function CalculatorRulouriTencuibilePage() {
+function CalculatorRulouriTencuibileCuPlasaPage() {
   //Template
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
@@ -141,9 +141,12 @@ function CalculatorRulouriTencuibilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`${API_LINK}/api/produsetencuibil`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `${API_LINK}/api/produsetencuibilcuplasa`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: 'FETCH_Produs_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_Produs_FAIL', payload: err.message });
@@ -272,269 +275,172 @@ function CalculatorRulouriTencuibilePage() {
         if (!checkBoxMotor) {
           if (inaltime >= 0.5 && inaltime <= 2.4) {
             let pretTotal =
-              latime * selectedProduct.D165.TocRulouTencuibil165pe20.pret +
-              latime * selectedProduct.D165.SinaTencuibilaPanelService.pret +
-              latime * selectedProduct.D165.PanelService165pe20.pret +
-              latime * selectedProduct.D165.PolistirenExtrudat.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D165.AxOctogonal40.pret +
+              latime * selectedProduct.D165.TocTenc165pe20.pret +
+              latime * selectedProduct.D165.SinaDeTencuire20.pret +
               ((parseFloat(inaltime) * 100) / 3.9) *
                 (parseFloat(latime) - 0.05) *
                 selectedProduct.D165.LamelaAluminiu.pret +
               (parseFloat(latime) - 0.05) *
                 selectedProduct.D165.LamelaTerminala.pret +
+              latime * selectedProduct.D165.PanelServIz165pe20.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D165.AxOctogonal40.pret +
               (parseFloat(inaltime) - 0.1) *
                 2 *
-                selectedProduct.D165.GhidajAlu.pret +
-              1 * selectedProduct.D165.CapacLateral165pe20.pret +
-              1 * selectedProduct.D165.Fulie165.pret +
-              1 * selectedProduct.D165.Dop40.pret +
+                selectedProduct.D165.GhidajAluKombi.pret +
+              latime * selectedProduct.D165.ProfilMobilPlasa.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D165.ProfilFixPlasa.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D165.PerieGhidajPlasa.pret +
+              latime * selectedProduct.D165.PlasaPeAx.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D165.PerieGhidaj.pret +
+              1 * selectedProduct.D165.CapacLateral.pret +
+              1 * selectedProduct.D165.Fulie.pret +
+              1 * selectedProduct.D165.Dop.pret +
+              1 * selectedProduct.D165.KitPlasa.pret +
               2 * selectedProduct.D165.Rulment.pret +
-              6 * selectedProduct.D165.Snur.pret +
-              1 * selectedProduct.D165.PalnieGhidaj.pret +
-              9 * selectedProduct.D165.OrnamentPlastic.pret +
-              1 * selectedProduct.D165.RolaPlastic.pret +
-              1 * selectedProduct.D165.ArcCilindric.pret +
+              5 * selectedProduct.D165.Snur.pret +
               1 * selectedProduct.D165.Automat.pret +
               2 * selectedProduct.D165.OpritorAscuns.pret +
-              64 * selectedProduct.D165.Arriter.pret;
+              1 * selectedProduct.D165.PalnieGhidaj.pret +
+              12 * selectedProduct.D165.OrnamentPlastic.pret +
+              1 * selectedProduct.D165.RolaPlasticCuCilindru.pret +
+              1 * selectedProduct.D165.ArcCilindric.pret +
+              46 * selectedProduct.D165.Arriter.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D165.AgatatorCovor170.pret;
+              pretTotal += 2 * selectedProduct.D165.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D165.AgatatorCovor170.pret;
+              pretTotal += 3 * selectedProduct.D165.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D165.AgatatorCovor170.pret;
-            } else pretTotal += 6 * selectedProduct.D165.AgatatorCovor170.pret;
+              pretTotal += 4 * selectedProduct.D165.AgatatorCovor130.pret;
+            } else pretTotal += 5 * selectedProduct.D165.AgatatorCovor130.pret;
 
             if (parseFloat(latime) <= 1) {
+              pretTotal += 2 * selectedProduct.D165.Inel40.pret;
+            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
               pretTotal += 3 * selectedProduct.D165.Inel40.pret;
-            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D165.Inel40.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D165.Inel40.pret;
-            } else pretTotal += 6 * selectedProduct.D165.Inel40.pret;
+              pretTotal += 4 * selectedProduct.D165.Inel40.pret;
+            } else pretTotal += 5 * selectedProduct.D165.Inel40.pret;
 
             return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
           }
           if (inaltime > 2.4 && inaltime <= 2.9) {
             let pretTotal =
-              latime * selectedProduct.D180.TocRulouTencuibil165pe20.pret +
-              latime * selectedProduct.D180.SinaTencuibilaPanelService.pret +
-              latime * selectedProduct.D180.PanelService165pe20.pret +
-              latime * selectedProduct.D180.PolistirenExtrudat.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D180.AxOctogonal60.pret +
+              latime * selectedProduct.D180.TocTenc180pe20.pret +
+              latime * selectedProduct.D180.SinaDeTencuire20.pret +
               ((parseFloat(inaltime) * 100) / 3.9) *
                 (parseFloat(latime) - 0.05) *
                 selectedProduct.D180.LamelaAluminiu.pret +
               (parseFloat(latime) - 0.05) *
                 selectedProduct.D180.LamelaTerminala.pret +
+              latime * selectedProduct.D180.PanelServIz180pe20.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D180.AxOctogonal40.pret +
               (parseFloat(inaltime) - 0.1) *
                 2 *
-                selectedProduct.D180.GhidajAlu.pret +
-              1 * selectedProduct.D180.CapacLateral165pe20.pret +
-              1 * selectedProduct.D180.Fulie165.pret +
-              1 * selectedProduct.D180.Dop60.pret +
+                selectedProduct.D180.GhidajAluKombi.pret +
+              latime * selectedProduct.D180.ProfilMobilPlasa.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D180.ProfilFixPlasa.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D180.PerieGhidajPlasa.pret +
+              latime * selectedProduct.D180.PlasaPeAx.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D180.PerieGhidaj.pret +
+              1 * selectedProduct.D180.CapacLateral.pret +
+              1 * selectedProduct.D180.Fulie.pret +
+              1 * selectedProduct.D180.Dop.pret +
+              1 * selectedProduct.D180.KitPlasa.pret +
               2 * selectedProduct.D180.Rulment.pret +
-              6 * selectedProduct.D180.Snur.pret +
-              1 * selectedProduct.D180.PalnieGhidaj.pret +
-              9 * selectedProduct.D180.OrnamentPlastic.pret +
-              1 * selectedProduct.D180.RolaPlastic.pret +
-              1 * selectedProduct.D180.ArcCilindric.pret +
+              5 * selectedProduct.D180.Snur.pret +
               1 * selectedProduct.D180.Automat.pret +
               2 * selectedProduct.D180.OpritorAscuns.pret +
-              64 * selectedProduct.D180.Arriter.pret;
+              1 * selectedProduct.D180.PalnieGhidaj.pret +
+              12 * selectedProduct.D180.OrnamentPlastic.pret +
+              1 * selectedProduct.D180.RolaPlasticCuCilindru.pret +
+              1 * selectedProduct.D180.ArcCilindric.pret +
+              46 * selectedProduct.D180.Arriter.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D180.AgatatorCovor170.pret;
+              pretTotal += 2 * selectedProduct.D180.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D180.AgatatorCovor170.pret;
+              pretTotal += 3 * selectedProduct.D180.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D180.AgatatorCovor170.pret;
-            } else pretTotal += 6 * selectedProduct.D180.AgatatorCovor170.pret;
+              pretTotal += 4 * selectedProduct.D180.AgatatorCovor130.pret;
+            } else pretTotal += 5 * selectedProduct.D180.AgatatorCovor130.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D180.Inel60.pret;
+              pretTotal += 2 * selectedProduct.D180.Inel40.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D180.Inel60.pret;
+              pretTotal += 3 * selectedProduct.D180.Inel40.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D180.Inel60.pret;
-            } else pretTotal += 6 * selectedProduct.D180.Inel60.pret;
+              pretTotal += 4 * selectedProduct.D180.Inel40.pret;
+            } else pretTotal += 5 * selectedProduct.D180.Inel40.pret;
 
             return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
           }
           if (inaltime > 2.9 && inaltime <= 4) {
             let pretTotal =
-              latime * selectedProduct.D205.TocRulouTencuibil205pe90.pret +
-              latime * selectedProduct.D205.SinaTencuibilaPanelService.pret +
-              latime * selectedProduct.D205.PanelService205pe90.pret +
-              latime * selectedProduct.D205.PolistirenExtrudat.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D205.AxOctogonal60.pret +
+              latime * selectedProduct.D205.TocTenc205pe20.pret +
+              latime * selectedProduct.D205.SinaDeTencuire20.pret +
               ((parseFloat(inaltime) * 100) / 3.9) *
                 (parseFloat(latime) - 0.05) *
                 selectedProduct.D205.LamelaAluminiu.pret +
               (parseFloat(latime) - 0.05) *
                 selectedProduct.D205.LamelaTerminala.pret +
+              latime * selectedProduct.D205.PanelServIz205pe20.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.AxOctogonal40.pret +
               (parseFloat(inaltime) - 0.1) *
                 2 *
-                selectedProduct.D205.GhidajAlu.pret +
-              1 * selectedProduct.D205.CapacLateral205pe90.pret +
-              1 * selectedProduct.D205.Fulie165.pret +
-              1 * selectedProduct.D205.Dop60.pret +
+                selectedProduct.D205.GhidajAluKombi.pret +
+              latime * selectedProduct.D205.ProfilMobilPlasa.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.ProfilFixPlasa.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D205.PerieGhidajPlasa.pret +
+              latime * selectedProduct.D205.PlasaPeAx.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D205.PerieGhidaj.pret +
+              1 * selectedProduct.D205.CapacLateral.pret +
+              1 * selectedProduct.D205.Fulie.pret +
+              1 * selectedProduct.D205.Dop.pret +
+              1 * selectedProduct.D205.KitPlasa.pret +
               2 * selectedProduct.D205.Rulment.pret +
-              6 * selectedProduct.D205.Snur.pret +
-              1 * selectedProduct.D205.PalnieGhidaj.pret +
-              9 * selectedProduct.D205.OrnamentPlastic.pret +
-              1 * selectedProduct.D205.RolaPlastic.pret +
-              1 * selectedProduct.D205.ArcCilindric.pret +
+              5 * selectedProduct.D205.Snur.pret +
               1 * selectedProduct.D205.Automat.pret +
               2 * selectedProduct.D205.OpritorAscuns.pret +
-              64 * selectedProduct.D205.Arriter.pret;
+              1 * selectedProduct.D205.PalnieGhidaj.pret +
+              12 * selectedProduct.D205.OrnamentPlastic.pret +
+              1 * selectedProduct.D205.RolaPlasticCuCilindru.pret +
+              1 * selectedProduct.D205.ArcCilindric.pret +
+              46 * selectedProduct.D205.Arriter.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D205.AgatatorCovor170.pret;
+              pretTotal += 2 * selectedProduct.D205.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D205.AgatatorCovor170.pret;
+              pretTotal += 3 * selectedProduct.D205.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D205.AgatatorCovor170.pret;
-            } else pretTotal += 6 * selectedProduct.D205.AgatatorCovor170.pret;
+              pretTotal += 4 * selectedProduct.D205.AgatatorCovor130.pret;
+            } else pretTotal += 5 * selectedProduct.D205.AgatatorCovor130.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D205.Inel60.pret;
+              pretTotal += 2 * selectedProduct.D205.Inel40.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D205.Inel60.pret;
+              pretTotal += 3 * selectedProduct.D205.Inel40.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D205.Inel60.pret;
-            } else pretTotal += 6 * selectedProduct.D205.Inel60.pret;
-
-            // // Calculations
-            // console.log(
-            //   'TocRulouTencuibil205pe90:',
-            //   latime * selectedProduct.D205.TocRulouTencuibil205pe90.pret
-            // );
-            // console.log(
-            //   'SinaTencuibilaPanelService:',
-            //   latime * selectedProduct.D205.SinaTencuibilaPanelService.pret
-            // );
-            // console.log(
-            //   'PanelService205pe90:',
-            //   latime * selectedProduct.D205.PanelService205pe90.pret
-            // );
-            // console.log(
-            //   'PolistirenExtrudat:',
-            //   latime * selectedProduct.D205.PolistirenExtrudat.pret
-            // );
-            // console.log(
-            //   'AxOctogonal60:',
-            //   (parseFloat(latime) - 0.05) *
-            //     selectedProduct.D205.AxOctogonal60.pret
-            // );
-            // console.log(
-            //   'LamelaAluminiu:',
-            //   ((parseFloat(inaltime) * 100) / 3.9) *
-            //     (parseFloat(latime) - 0.05) *
-            //     selectedProduct.D205.LamelaAluminiu.pret
-            // );
-            // console.log(
-            //   'LamelaTerminala:',
-            //   (parseFloat(latime) - 0.05) *
-            //     selectedProduct.D205.LamelaTerminala.pret
-            // );
-            // console.log(
-            //   'GarnituraDeContact:',
-            //   (parseFloat(latime) - 0.05) *
-            //     selectedProduct.D205.GarnituraDeContact.pret
-            // );
-            // console.log(
-            //   'GhidajAlu:',
-            //   (parseFloat(inaltime) - 0.1) *
-            //     2 *
-            //     selectedProduct.D205.GhidajAlu.pret
-            // );
-            // console.log(
-            //   'PerieGhidaj:',
-            //   (parseFloat(inaltime) - 0.1) *
-            //     4 *
-            //     selectedProduct.D205.PerieGhidaj.pret
-            // );
-            // console.log(
-            //   'CapacLateral205pe90:',
-            //   1 * selectedProduct.D205.CapacLateral205pe90.pret
-            // );
-            // console.log('Fulie165:', 1 * selectedProduct.D205.Fulie165.pret);
-            // console.log('Dop60:', 1 * selectedProduct.D205.Dop60.pret);
-            // console.log('Rulment:', 2 * selectedProduct.D205.Rulment.pret);
-            // console.log('Snur:', 6 * selectedProduct.D205.Snur.pret);
-            // console.log(
-            //   'PalnieGhidaj:',
-            //   1 * selectedProduct.D205.PalnieGhidaj.pret
-            // );
-            // console.log(
-            //   'OrnamentPlastic:',
-            //   9 * selectedProduct.D205.OrnamentPlastic.pret
-            // );
-            // console.log(
-            //   'RolaPlastic:',
-            //   1 * selectedProduct.D205.RolaPlastic.pret
-            // );
-            // console.log(
-            //   'ArcCilindric:',
-            //   1 * selectedProduct.D205.ArcCilindric.pret
-            // );
-            // console.log('Automat:', 1 * selectedProduct.D205.Automat.pret);
-            // console.log(
-            //   'OpritorAscuns:',
-            //   2 * selectedProduct.D205.OpritorAscuns.pret
-            // );
-            // console.log('Arriter:', 64 * selectedProduct.D205.Arriter.pret);
-
-            // // AgatatorCovor170 calculation
-            // if (parseFloat(latime) <= 1) {
-            //   console.log(
-            //     'AgatatorCovor170:',
-            //     3 * selectedProduct.D205.AgatatorCovor170.pret
-            //   );
-            //   pretTotal += 3 * selectedProduct.D205.AgatatorCovor170.pret;
-            // } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-            //   console.log(
-            //     'AgatatorCovor170:',
-            //     4 * selectedProduct.D205.AgatatorCovor170.pret
-            //   );
-            //   pretTotal += 4 * selectedProduct.D205.AgatatorCovor170.pret;
-            // } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-            //   console.log(
-            //     'AgatatorCovor170:',
-            //     5 * selectedProduct.D205.AgatatorCovor170.pret
-            //   );
-            //   pretTotal += 5 * selectedProduct.D205.AgatatorCovor170.pret;
-            // } else {
-            //   console.log(
-            //     'AgatatorCovor170:',
-            //     6 * selectedProduct.D205.AgatatorCovor170.pret
-            //   );
-            //   pretTotal += 6 * selectedProduct.D205.AgatatorCovor170.pret;
-            // }
-
-            // // Inel60 calculation
-            // if (parseFloat(latime) <= 1) {
-            //   console.log('Inel60:', 3 * selectedProduct.D205.Inel60.pret);
-            //   pretTotal += 3 * selectedProduct.D205.Inel60.pret;
-            // } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-            //   console.log('Inel60:', 4 * selectedProduct.D205.Inel60.pret);
-            //   pretTotal += 4 * selectedProduct.D205.Inel60.pret;
-            // } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-            //   console.log('Inel60:', 5 * selectedProduct.D205.Inel60.pret);
-            //   pretTotal += 5 * selectedProduct.D205.Inel60.pret;
-            // } else {
-            //   console.log('Inel60:', 6 * selectedProduct.D205.Inel60.pret);
-            //   pretTotal += 6 * selectedProduct.D205.Inel60.pret;
-            // }
-
-            // // Final Total Price
-            // console.log('Final pretTotal:', pretTotal.toFixed(2));
-            // return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+              pretTotal += 4 * selectedProduct.D205.Inel40.pret;
+            } else pretTotal += 5 * selectedProduct.D205.Inel40.pret;
 
             return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
           }
@@ -542,48 +448,58 @@ function CalculatorRulouriTencuibilePage() {
         if (checkBoxMotor) {
           if (inaltime >= 0.5 && inaltime <= 2.4) {
             let pretTotal =
-              latime * selectedProduct.D165.TocRulouTencuibil165pe20.pret +
-              latime * selectedProduct.D165.SinaTencuibilaPanelService.pret +
-              latime * selectedProduct.D165.PanelService165pe20.pret +
-              latime * selectedProduct.D165.PolistirenExtrudat.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D165.AxOctogonal40.pret +
+              latime * selectedProduct.D165.TocTenc165pe20.pret +
+              latime * selectedProduct.D165.SinaDeTencuire20.pret +
               ((parseFloat(inaltime) * 100) / 3.9) *
                 (parseFloat(latime) - 0.05) *
                 selectedProduct.D165.LamelaAluminiu.pret +
               (parseFloat(latime) - 0.05) *
                 selectedProduct.D165.LamelaTerminala.pret +
+              latime * selectedProduct.D165.PanelServIz165pe20.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D165.AxOctogonal40.pret +
               (parseFloat(inaltime) - 0.1) *
                 2 *
-                selectedProduct.D165.GhidajAlu.pret +
-              1 * selectedProduct.D165.CapacLateral165pe20.pret +
-              1 * selectedProduct.D165.Fulie165.pret +
-              1 * selectedProduct.D165.Dop40.pret +
+                selectedProduct.D165.GhidajAluKombi.pret +
+              latime * selectedProduct.D165.ProfilMobilPlasa.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D165.ProfilFixPlasa.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D165.PerieGhidajPlasa.pret +
+              latime * selectedProduct.D165.PlasaPeAx.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D165.PerieGhidaj.pret +
+              1 * selectedProduct.D165.CapacLateral.pret +
+              1 * selectedProduct.D165.Fulie.pret +
+              1 * selectedProduct.D165.Dop.pret +
+              1 * selectedProduct.D165.KitPlasa.pret +
               2 * selectedProduct.D165.Rulment.pret +
-              6 * selectedProduct.D165.Snur.pret +
-              1 * selectedProduct.D165.PalnieGhidaj.pret +
-              9 * selectedProduct.D165.OrnamentPlastic.pret +
-              1 * selectedProduct.D165.RolaPlastic.pret +
-              1 * selectedProduct.D165.ArcCilindric.pret +
+              5 * selectedProduct.D165.Snur.pret +
               1 * selectedProduct.D165.Automat.pret +
               2 * selectedProduct.D165.OpritorAscuns.pret +
-              64 * selectedProduct.D165.Arriter.pret;
+              1 * selectedProduct.D165.PalnieGhidaj.pret +
+              12 * selectedProduct.D165.OrnamentPlastic.pret +
+              1 * selectedProduct.D165.RolaPlasticCuCilindru.pret +
+              1 * selectedProduct.D165.ArcCilindric.pret +
+              46 * selectedProduct.D165.Arriter.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D165.AgatatorCovor170.pret;
+              pretTotal += 2 * selectedProduct.D165.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D165.AgatatorCovor170.pret;
+              pretTotal += 3 * selectedProduct.D165.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D165.AgatatorCovor170.pret;
-            } else pretTotal += 6 * selectedProduct.D165.AgatatorCovor170.pret;
+              pretTotal += 4 * selectedProduct.D165.AgatatorCovor130.pret;
+            } else pretTotal += 5 * selectedProduct.D165.AgatatorCovor130.pret;
 
             if (parseFloat(latime) <= 1) {
+              pretTotal += 2 * selectedProduct.D165.Inel40.pret;
+            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
               pretTotal += 3 * selectedProduct.D165.Inel40.pret;
-            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D165.Inel40.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D165.Inel40.pret;
-            } else pretTotal += 6 * selectedProduct.D165.Inel40.pret;
+              pretTotal += 4 * selectedProduct.D165.Inel40.pret;
+            } else pretTotal += 5 * selectedProduct.D165.Inel40.pret;
             if (
               selectedMotorSomfySmart === '71' ||
               selectedMotorSomfySmart === '118' ||
@@ -603,48 +519,59 @@ function CalculatorRulouriTencuibilePage() {
           }
           if (inaltime >= 2.4 && inaltime <= 2.9) {
             let pretTotal =
-              latime * selectedProduct.D180.TocRulouTencuibil165pe20.pret +
-              latime * selectedProduct.D180.SinaTencuibilaPanelService.pret +
-              latime * selectedProduct.D180.PanelService165pe20.pret +
-              latime * selectedProduct.D180.PolistirenExtrudat.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D180.AxOctogonal60.pret +
+              latime * selectedProduct.D180.TocTenc180pe20.pret +
+              latime * selectedProduct.D180.SinaDeTencuire20.pret +
               ((parseFloat(inaltime) * 100) / 3.9) *
                 (parseFloat(latime) - 0.05) *
                 selectedProduct.D180.LamelaAluminiu.pret +
               (parseFloat(latime) - 0.05) *
                 selectedProduct.D180.LamelaTerminala.pret +
+              latime * selectedProduct.D180.PanelServIz180pe20.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D180.AxOctogonal40.pret +
               (parseFloat(inaltime) - 0.1) *
                 2 *
-                selectedProduct.D180.GhidajAlu.pret +
-              1 * selectedProduct.D180.CapacLateral165pe20.pret +
-              1 * selectedProduct.D180.Fulie165.pret +
-              1 * selectedProduct.D180.Dop60.pret +
+                selectedProduct.D180.GhidajAluKombi.pret +
+              latime * selectedProduct.D180.ProfilMobilPlasa.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D180.ProfilFixPlasa.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D180.PerieGhidajPlasa.pret +
+              latime * selectedProduct.D180.PlasaPeAx.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D180.PerieGhidaj.pret +
+              1 * selectedProduct.D180.CapacLateral.pret +
+              1 * selectedProduct.D180.Fulie.pret +
+              1 * selectedProduct.D180.Dop.pret +
+              1 * selectedProduct.D180.KitPlasa.pret +
               2 * selectedProduct.D180.Rulment.pret +
-              6 * selectedProduct.D180.Snur.pret +
-              1 * selectedProduct.D180.PalnieGhidaj.pret +
-              9 * selectedProduct.D180.OrnamentPlastic.pret +
-              1 * selectedProduct.D180.RolaPlastic.pret +
-              1 * selectedProduct.D180.ArcCilindric.pret +
+              5 * selectedProduct.D180.Snur.pret +
               1 * selectedProduct.D180.Automat.pret +
               2 * selectedProduct.D180.OpritorAscuns.pret +
-              64 * selectedProduct.D180.Arriter.pret;
+              1 * selectedProduct.D180.PalnieGhidaj.pret +
+              12 * selectedProduct.D180.OrnamentPlastic.pret +
+              1 * selectedProduct.D180.RolaPlasticCuCilindru.pret +
+              1 * selectedProduct.D180.ArcCilindric.pret +
+              46 * selectedProduct.D180.Arriter.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D180.AgatatorCovor170.pret;
+              pretTotal += 2 * selectedProduct.D180.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D180.AgatatorCovor170.pret;
+              pretTotal += 3 * selectedProduct.D180.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D180.AgatatorCovor170.pret;
-            } else pretTotal += 6 * selectedProduct.D180.AgatatorCovor170.pret;
+              pretTotal += 4 * selectedProduct.D180.AgatatorCovor130.pret;
+            } else pretTotal += 5 * selectedProduct.D180.AgatatorCovor130.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D180.Inel60.pret;
+              pretTotal += 2 * selectedProduct.D180.Inel40.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D180.Inel60.pret;
+              pretTotal += 3 * selectedProduct.D180.Inel40.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D180.Inel60.pret;
-            } else pretTotal += 6 * selectedProduct.D180.Inel60.pret;
+              pretTotal += 4 * selectedProduct.D180.Inel40.pret;
+            } else pretTotal += 5 * selectedProduct.D180.Inel40.pret;
+
             if (
               selectedMotorSomfySmart === '71' ||
               selectedMotorSomfySmart === '118' ||
@@ -664,48 +591,59 @@ function CalculatorRulouriTencuibilePage() {
           }
           if (inaltime >= 2.9 && inaltime <= 4) {
             let pretTotal =
-              latime * selectedProduct.D205.TocRulouTencuibil205pe90.pret +
-              latime * selectedProduct.D205.SinaTencuibilaPanelService.pret +
-              latime * selectedProduct.D205.PanelService205pe90.pret +
-              latime * selectedProduct.D205.PolistirenExtrudat.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D205.AxOctogonal60.pret +
+              latime * selectedProduct.D205.TocTenc205pe20.pret +
+              latime * selectedProduct.D205.SinaDeTencuire20.pret +
               ((parseFloat(inaltime) * 100) / 3.9) *
                 (parseFloat(latime) - 0.05) *
                 selectedProduct.D205.LamelaAluminiu.pret +
               (parseFloat(latime) - 0.05) *
                 selectedProduct.D205.LamelaTerminala.pret +
+              latime * selectedProduct.D205.PanelServIz205pe20.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.AxOctogonal40.pret +
               (parseFloat(inaltime) - 0.1) *
                 2 *
-                selectedProduct.D205.GhidajAlu.pret +
-              1 * selectedProduct.D205.CapacLateral205pe90.pret +
-              1 * selectedProduct.D205.Fulie165.pret +
-              1 * selectedProduct.D205.Dop60.pret +
+                selectedProduct.D205.GhidajAluKombi.pret +
+              latime * selectedProduct.D205.ProfilMobilPlasa.pret +
+              (parseFloat(latime) - 0.05) *
+                selectedProduct.D205.ProfilFixPlasa.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D205.PerieGhidajPlasa.pret +
+              latime * selectedProduct.D205.PlasaPeAx.pret +
+              (parseFloat(inaltime) - 0.1) *
+                4 *
+                selectedProduct.D205.PerieGhidaj.pret +
+              1 * selectedProduct.D205.CapacLateral.pret +
+              1 * selectedProduct.D205.Fulie.pret +
+              1 * selectedProduct.D205.Dop.pret +
+              1 * selectedProduct.D205.KitPlasa.pret +
               2 * selectedProduct.D205.Rulment.pret +
-              6 * selectedProduct.D205.Snur.pret +
-              1 * selectedProduct.D205.PalnieGhidaj.pret +
-              9 * selectedProduct.D205.OrnamentPlastic.pret +
-              1 * selectedProduct.D205.RolaPlastic.pret +
-              1 * selectedProduct.D205.ArcCilindric.pret +
+              5 * selectedProduct.D205.Snur.pret +
               1 * selectedProduct.D205.Automat.pret +
               2 * selectedProduct.D205.OpritorAscuns.pret +
-              64 * selectedProduct.D205.Arriter.pret;
+              1 * selectedProduct.D205.PalnieGhidaj.pret +
+              12 * selectedProduct.D205.OrnamentPlastic.pret +
+              1 * selectedProduct.D205.RolaPlasticCuCilindru.pret +
+              1 * selectedProduct.D205.ArcCilindric.pret +
+              46 * selectedProduct.D205.Arriter.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D205.AgatatorCovor170.pret;
+              pretTotal += 2 * selectedProduct.D205.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D205.AgatatorCovor170.pret;
+              pretTotal += 3 * selectedProduct.D205.AgatatorCovor130.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D205.AgatatorCovor170.pret;
-            } else pretTotal += 6 * selectedProduct.D205.AgatatorCovor170.pret;
+              pretTotal += 4 * selectedProduct.D205.AgatatorCovor130.pret;
+            } else pretTotal += 5 * selectedProduct.D205.AgatatorCovor130.pret;
 
             if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D205.Inel60.pret;
+              pretTotal += 2 * selectedProduct.D205.Inel40.pret;
             } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D205.Inel60.pret;
+              pretTotal += 3 * selectedProduct.D205.Inel40.pret;
             } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D205.Inel60.pret;
-            } else pretTotal += 6 * selectedProduct.D205.Inel60.pret;
+              pretTotal += 4 * selectedProduct.D205.Inel40.pret;
+            } else pretTotal += 5 * selectedProduct.D205.Inel40.pret;
+
             if (
               selectedMotorSomfySmart === '71' ||
               selectedMotorSomfySmart === '118' ||
@@ -1201,4 +1139,4 @@ function CalculatorRulouriTencuibilePage() {
   );
 }
 
-export default CalculatorRulouriTencuibilePage;
+export default CalculatorRulouriTencuibileCuPlasaPage;

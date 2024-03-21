@@ -21,6 +21,12 @@ import CreateProdusCuPlasa from './Screens/CreateProdusCuPlasaPage';
 import CalculatorRulouriAluminiuCuPlasaPage from './Screens/CalculatorRulouriAluminiuCuPlasaPage';
 import CreateProdusTencuibil from './Screens/CreateProdusTencuibilPage';
 import CalculatorRulouriTencuibilePage from './Screens/CalculatorRulouriTencuibilePage';
+import CreateProdusTencuibilCuPlasa from './Screens/CreateProdusTencuibilCuPlasaPage';
+import CalculatorRulouriTencuibileCuPlasaPage from './Screens/CalculatorRulouriTencuibileCuPlasaPage';
+import CreateProdusSuprapus from './Screens/CreateProdusSuprapusPage';
+import CalculatorRulouriSuprapusPage from './Screens/CalculatorRulouriSuprapusPage';
+import CreateProdusSuprapusCuPlasa from './Screens/CreateProdusSuprapusCuPlasaPage';
+import CalculatorRulouriSuprapusCuPlasaPage from './Screens/CalculatorRulouriSuprapusCuPlasaPage';
 
 function App() {
   return (
@@ -57,6 +63,31 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/ruloutencuibilcuplasa"
+              element={
+                <ProtectedRoute>
+                  <CalculatorRulouriTencuibileCuPlasaPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/rulourisuprapus"
+              element={
+                <ProtectedRoute>
+                  <CalculatorRulouriSuprapusPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/rulourisuprapuscuplasa"
+              element={
+                <ProtectedRoute>
+                  <CalculatorRulouriSuprapusCuPlasaPage />
+                </ProtectedRoute>
+              }
+            />
+
             <Route
               path="/comenzi"
               element={
@@ -140,7 +171,30 @@ function App() {
                 </AdminRoute>
               }
             />
-
+            <Route
+              path="/produsnouruloutencuibilcuplasa"
+              element={
+                <AdminRoute>
+                  <CreateProdusTencuibilCuPlasa />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/produsnourulousuprapus"
+              element={
+                <AdminRoute>
+                  <CreateProdusSuprapus />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/produsnourulousuprapuscuplasa"
+              element={
+                <AdminRoute>
+                  <CreateProdusSuprapusCuPlasa />
+                </AdminRoute>
+              }
+            />
             <Route path="/update" element={<UpdatePage />} />
           </Routes>
         </Layout>

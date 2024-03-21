@@ -4,6 +4,9 @@ import ProduseTable from '../components/Tables/ProduseTable';
 import { useNavigate } from 'react-router-dom';
 import ProduseCuPlasaTable from '../components/Tables/ProduseCuPlasaTable';
 import ProduseTencuibilTable from '../components/Tables/ProduseTencuibilTable';
+import ProduseTencuibilCuPlasaTable from '../components/Tables/ProduseTencuibilCuPlasaTable';
+import ProduseSuprapusTable from '../components/Tables/ProduseSuprapusTable';
+import ProduseSuprapusCuPlasaTable from '../components/Tables/ProduseSuprapusCuPlasaTable';
 
 export default function ProdusePage() {
   const navigate = useNavigate();
@@ -62,7 +65,7 @@ export default function ProdusePage() {
             color="primary"
             onClick={() => navigate(`/produsnouruloualuminiucuplasa`)}
           >
-            + RULOU ALUMINIU cu plasă
+            + RULOU ALU. cu plasă
           </Button>
           <Button
             sx={{
@@ -108,10 +111,57 @@ export default function ProdusePage() {
             }}
             variant="contained"
             color="primary"
-            disabled
-            onClick={() => navigate(`/produsnouruloualuminiusimplu`)}
+            onClick={() => navigate(`/produsnouruloutencuibilcuplasa`)}
           >
-            + RULOU TENCUIBIL cu plasă
+            + RULOU TENC. cu plasă
+          </Button>
+          <Button
+            sx={{
+              backgroundColor: '#06386a',
+              ml: 1,
+              '&:hover': {
+                backgroundColor: '#003c7f',
+              },
+
+              '@media (max-width: 800px)': {
+                backgroundColor: '#06386a',
+                marginBottom: 1,
+                minWidth: '100%',
+                ml: 0,
+                '&:hover': {
+                  backgroundColor: '#003c7f',
+                },
+              },
+            }}
+            variant="contained"
+            color="primary"
+            onClick={() => navigate(`/produsnourulousuprapus`)}
+          >
+            + RULOU SUPRAPUS
+          </Button>
+          <Button
+            sx={{
+              backgroundColor: '#06386a',
+              ml: 1,
+              '&:hover': {
+                backgroundColor: '#003c7f',
+              },
+
+              '@media (max-width: 800px)': {
+                backgroundColor: '#06386a',
+                marginBottom: 1,
+                minWidth: '100%',
+                ml: 0,
+                '&:hover': {
+                  backgroundColor: '#003c7f',
+                },
+              },
+            }}
+            variant="contained"
+            color="primary"
+            onClick={() => navigate(`/produsnourulousuprapuscuplasa`)}
+          >
+            + RULOU SUPR. CU PLASĂ
           </Button>
         </Grid>
         <Grid item xs={12}>
@@ -132,6 +182,24 @@ export default function ProdusePage() {
               Rulou Tencuibil
             </Typography>
             <ProduseTencuibilTable />
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="subtitle1" style={{ color: '#06386a' }}>
+              Rulou Tencuibil cu plasa
+            </Typography>
+            <ProduseTencuibilCuPlasaTable />
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="subtitle1" style={{ color: '#06386a' }}>
+              Rulou suprapus
+            </Typography>
+            <ProduseSuprapusTable />
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="subtitle1" style={{ color: '#06386a' }}>
+              Rulou suprapus cu plasa
+            </Typography>
+            <ProduseSuprapusCuPlasaTable />
           </Box>
         </Grid>
       </Grid>
