@@ -165,50 +165,75 @@ function OferteTable() {
                         {oferta.produs} {oferta.culoare}
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Table>
-                          <TableHead>
-                            <TableRow>
-                              <TableCell>Înalțime (m)</TableCell>
-                              <TableCell>Lățime (m)</TableCell>
-                              <TableCell>Balcon</TableCell>
-                              <TableCell>Actionare</TableCell>
-                              <TableCell>Manual</TableCell>
-                              <TableCell>Tip Motor</TableCell>
-                              <TableCell>Act. Motor</TableCell>
-                              <TableCell>Pret</TableCell>
-                            </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            <TableRow sx={{ textTransform: 'uppercase' }}>
-                              <TableCell>{oferta.inaltime} </TableCell>
-                              <TableCell>{oferta.latime} </TableCell>
-                              <TableCell>
-                                {oferta.balcon ? 'DA' : 'NU'}
-                              </TableCell>
-                              <TableCell>{oferta.bandaSnur} </TableCell>
-                              <TableCell>
-                                {oferta.bandaSnur.trim() !== ''
-                                  ? oferta.bandaSnur
-                                  : 'NU'}
-                              </TableCell>
-                              <TableCell>
-                                {oferta.tipMotor.trim() !== ''
-                                  ? oferta.tipMotor
-                                  : 'NU'}{' '}
-                              </TableCell>
-                              <TableCell>
-                                {oferta.actionareMotor.trim() !== ''
-                                  ? ['68', '71', '80', '85'].includes(
-                                      oferta.actionareMotor
-                                    )
-                                    ? 'Întrerupător'
-                                    : 'Telecomandă'
-                                  : 'NU'}{' '}
-                              </TableCell>
-                              <TableCell>{oferta.pret} </TableCell>
-                            </TableRow>
-                          </TableBody>
-                        </Table>
+                        {oferta.bandaSnur !== undefined &&
+                        oferta.tipMotor !== undefined &&
+                        oferta.actionareMotor !== undefined ? (
+                          <Table>
+                            <TableHead>
+                              <TableRow>
+                                <TableCell>Înalțime (m)</TableCell>
+                                <TableCell>Lățime (m)</TableCell>
+                                <TableCell>Balcon</TableCell>
+                                <TableCell>Actionare</TableCell>
+                                <TableCell>Manual</TableCell>
+                                <TableCell>Tip Motor</TableCell>
+                                <TableCell>Act. Motor</TableCell>
+                                <TableCell>Pret</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              <TableRow sx={{ textTransform: 'uppercase' }}>
+                                <TableCell>{oferta.inaltime} </TableCell>
+                                <TableCell>{oferta.latime} </TableCell>
+                                <TableCell>
+                                  {oferta.balcon ? 'DA' : 'NU'}
+                                </TableCell>
+                                <TableCell>{oferta.bandaSnur} </TableCell>
+                                <TableCell>
+                                  {oferta.bandaSnur.trim() !== ''
+                                    ? oferta.bandaSnur
+                                    : 'NU'}
+                                </TableCell>
+                                <TableCell>
+                                  {oferta.tipMotor.trim() !== ''
+                                    ? oferta.tipMotor
+                                    : 'NU'}{' '}
+                                </TableCell>
+                                <TableCell>
+                                  {oferta.actionareMotor.trim() !== ''
+                                    ? ['68', '71', '80', '85'].includes(
+                                        oferta.actionareMotor
+                                      )
+                                      ? 'Întrerupător'
+                                      : 'Telecomandă'
+                                    : 'NU'}{' '}
+                                </TableCell>
+                                <TableCell>{oferta.pret} </TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        ) : (
+                          <Table>
+                            <TableHead>
+                              <TableRow>
+                                <TableCell>Înalțime (m)</TableCell>
+                                <TableCell>Lățime (m)</TableCell>
+                                <TableCell>Distantier</TableCell>
+                                <TableCell>Pret</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              <TableRow sx={{ textTransform: 'uppercase' }}>
+                                <TableCell>{oferta.inaltime} </TableCell>
+                                <TableCell>{oferta.latime} </TableCell>
+                                <TableCell>
+                                  {oferta.distantier ? 'DA' : 'NU'}
+                                </TableCell>
+                                <TableCell>{oferta.pret} </TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        )}
                         <Accordion>
                           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                             Mentiuni

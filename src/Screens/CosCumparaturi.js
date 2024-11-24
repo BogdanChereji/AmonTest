@@ -163,6 +163,12 @@ function CosCumparaturi() {
       toast.error('A apărut o problemă la ștergerea produsului.');
     }
   };
+  const productsDistantier = carts.filter(
+    (item) => item.distantier !== null && !item.produs.includes('Rulou')
+  );
+  const productsWithOutDistantier = carts.filter((item) =>
+    item.produs.includes('Rulou')
+  );
 
   const total = carts.reduce((acc, item) => acc + item.pret, 0);
   return (
@@ -231,28 +237,28 @@ function CosCumparaturi() {
                 </Button>
               </Box>
             </Box>
-            <Box sx={{ mt: 2 }}>
-              <TableContainer>
-                <Table aria-label="collapsible table">
+            {productsWithOutDistantier.length > 0 ? (
+              <TableContainer sx={{ mt: 2 }}>
+                <Table>
                   <TableHead>
                     <TableRow>
                       <TableCell align="left">Produs</TableCell>
-                      <TableCell align="right">Culoare</TableCell>
-                      <TableCell align="right">Înălțime (m)</TableCell>
-                      <TableCell align="right">Lățime (m)</TableCell>
-                      <TableCell align="center">Detalii produs</TableCell>
-                      <TableCell align="right">SubTotal (EUR)</TableCell>
-                      <TableCell />
+                      <TableCell align="left">Culoare</TableCell>
+                      <TableCell align="left">Înălțime (m)</TableCell>
+                      <TableCell align="left">Lățime (m)</TableCell>
+                      <TableCell align="left">Detalii produs</TableCell>
+                      <TableCell align="left">SubTotal (EUR)</TableCell>
+                      <TableCell align="left"></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {carts.map((item) => (
+                    {productsWithOutDistantier.map((item) => (
                       <React.Fragment key={item._id}>
                         <TableRow>
-                          <TableCell align="left">{item.produs}</TableCell>
-                          <TableCell align="right">{item.culoare}</TableCell>
-                          <TableCell align="right">{item.inaltime}</TableCell>
-                          <TableCell align="right">{item.latime}</TableCell>
+                          <TableCell> {item.produs}</TableCell>
+                          <TableCell> {item.culoare}</TableCell>
+                          <TableCell> {item.inaltime}</TableCell>
+                          <TableCell> {item.latime}</TableCell>
                           <TableCell>
                             <Accordion>
                               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -303,7 +309,7 @@ function CosCumparaturi() {
                                             ? 'Întrerupător'
                                             : 'Telecomandă'
                                           : 'NU'}
-                                      </TableCell>{' '}
+                                      </TableCell>
                                     </TableRow>
                                   </TableBody>
                                 </Table>
@@ -322,7 +328,7 @@ function CosCumparaturi() {
                               </AccordionDetails>
                             </Accordion>
                           </TableCell>
-                          <TableCell align="right">{item.pret}</TableCell>
+                          <TableCell> {item.pret}</TableCell>
                           <TableCell align="right">
                             <Button onClick={() => handleDeleteProduct(item)}>
                               <HighlightOffIcon sx={{ color: 'red' }} />
@@ -334,13 +340,66 @@ function CosCumparaturi() {
                   </TableBody>
                 </Table>
               </TableContainer>
-              <Typography
-                variant="h6"
-                sx={{ textAlign: 'right', fontWeight: 'bold', mr: 2, mt: 2 }}
-              >
-                TOTAL: {total} EUR
-              </Typography>
-            </Box>
+            ) : (
+              ''
+            )}
+            {productsDistantier.length > 0 ? (
+              <TableContainer sx={{ mt: 2 }}>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell align="left">Produs</TableCell>
+                      <TableCell align="left">Culoare</TableCell>
+                      <TableCell align="left">Înălțime (m)</TableCell>
+                      <TableCell align="left">Lățime (m)</TableCell>
+                      <TableCell align="left">Distantier</TableCell>
+                      <TableCell align="left">Mentiuni </TableCell>
+                      <TableCell align="left">SubTotal (EUR)</TableCell>
+                      <TableCell align="left"></TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {productsDistantier.map((item) => (
+                      <React.Fragment key={item._id}>
+                        <TableRow>
+                          <TableCell> {item.produs}</TableCell>
+                          <TableCell> {item.culoare}</TableCell>
+                          <TableCell> {item.inaltime}</TableCell>
+                          <TableCell> {item.latime}</TableCell>
+                          <TableCell>{item.distantier ? 'DA' : 'NU'}</TableCell>
+                          <TableCell>
+                            <Accordion>
+                              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                Mențiuni
+                              </AccordionSummary>
+                              <AccordionDetails>
+                                {item.mentiuni
+                                  ? item.mentiuni
+                                  : 'Nu exista mențiuni'}
+                              </AccordionDetails>
+                            </Accordion>
+                          </TableCell>
+                          <TableCell> {item.pret}</TableCell>
+                          <TableCell align="right">
+                            <Button onClick={() => handleDeleteProduct(item)}>
+                              <HighlightOffIcon sx={{ color: 'red' }} />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      </React.Fragment>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            ) : (
+              ''
+            )}
+            <Typography
+              variant="h6"
+              sx={{ textAlign: 'right', fontWeight: 'bold', mr: 2, mt: 2 }}
+            >
+              TOTAL: {total} EUR
+            </Typography>
           </Grid>
         </Grid>
       </form>

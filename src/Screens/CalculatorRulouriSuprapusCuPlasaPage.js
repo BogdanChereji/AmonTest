@@ -74,6 +74,7 @@ function CalculatorRulouriSuprapusCuPlasaPage() {
   const [checkBoxExcludeD137, setCheckBoxExcludeD137] = useState(false);
   const [checkBoxManual, setCheckBoxManual] = useState(false);
   const [checkBoxMotor, setCheckBoxMotor] = useState(false);
+  const [checkBoxSimplu, setCheckBoxSimplu] = useState(false);
   const [bandaSnur, setBandaSnur] = useState('');
   const [selectedMotor, setSelectedMotor] = useState('');
   const [selectedMotorSomfySmart, setSelectedMotorSomfySmart] = useState('');
@@ -109,6 +110,9 @@ function CalculatorRulouriSuprapusCuPlasaPage() {
   const handleCheckBoxManual = () => {
     setCheckBoxManual(!checkBoxManual);
     setCheckBoxMotor(false);
+  };
+  const handleCheckBoxSimplu = () => {
+    setCheckBoxSimplu(!checkBoxSimplu);
   };
 
   const handleCheckBoxMotor = () => {
@@ -272,189 +276,427 @@ function CalculatorRulouriSuprapusCuPlasaPage() {
         (produs) => produs._id === selectedProdus
       );
       if (selectedProdus) {
-        if (!checkBoxMotor) {
-          if (inaltime >= 0.5 && inaltime <= 2.4) {
-            let pretTotal =
-              latime * selectedProduct.D195.SetCasetaSuprapus195.pret +
-              latime * selectedProduct.D195.Izolatie195.pret +
-              latime * selectedProduct.D195.ProfilAdaptor.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.AxOctogonal40.pret +
-              ((parseFloat(inaltime) * 100) / 3.9) *
-                (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.LamelaAluminiu.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.LamelaTerminala.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.FixMobilPlasaPeAx.pret +
-              (parseFloat(inaltime) - 0.15) *
-                2 *
-                selectedProduct.D195.GhidajPVC.pret +
-              (parseFloat(inaltime) - 0.15) *
-                4 *
-                selectedProduct.D195.PerieGhidaj.pret +
-              1 * selectedProduct.D195.SetAccesorii195.pret +
-              6 * selectedProduct.D195.Banda.pret +
-              1 * selectedProduct.D195.Automat.pret +
-              2 * selectedProduct.D195.OpritorPVC.pret +
-              65 * selectedProduct.D195.Arriter.pret +
-              1 * selectedProduct.D195.SuplimentareAccesorii.pret;
+        if (latime <= 2.5) {
+          if (!checkBoxSimplu) {
+            if (latime <= 1.8) {
+              if (!checkBoxMotor) {
+                if (inaltime >= 0.5 && inaltime <= 2.4) {
+                  let pretTotal =
+                    latime * selectedProduct.D195.SetCasetaSuprapus195.pret +
+                    latime * selectedProduct.D195.Izolatie195.pret +
+                    latime * selectedProduct.D195.ProfilAdaptor.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.AxOctogonal40.pret +
+                    ((parseFloat(inaltime) * 100) / 3.9) *
+                      (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.LamelaAluminiu.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.LamelaTerminala.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.FixMobilPlasaPeAx.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      2 *
+                      selectedProduct.D195.GhidajPVC.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      4 *
+                      selectedProduct.D195.PerieGhidaj.pret +
+                    1 * selectedProduct.D195.SetAccesorii195.pret +
+                    6 * selectedProduct.D195.Banda.pret +
+                    1 * selectedProduct.D195.Automat.pret +
+                    2 * selectedProduct.D195.OpritorPVC.pret +
+                    65 * selectedProduct.D195.Arriter.pret +
+                    1 * selectedProduct.D195.SuplimentareAccesorii.pret;
 
-            if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D195.Inel40.pret;
-            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D195.Inel40.pret;
-            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D195.Inel40.pret;
-            } else pretTotal += 6 * selectedProduct.D195.Inel40.pret;
+                  if (parseFloat(latime) <= 1) {
+                    pretTotal += 3 * selectedProduct.D195.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1 &&
+                    parseFloat(latime) <= 1.5
+                  ) {
+                    pretTotal += 4 * selectedProduct.D195.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1.5 &&
+                    parseFloat(latime) <= 2
+                  ) {
+                    pretTotal += 5 * selectedProduct.D195.Inel40.pret;
+                  } else pretTotal += 6 * selectedProduct.D195.Inel40.pret;
 
-            return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
-          }
-          if (inaltime > 2.45 && inaltime <= 2.6) {
-            let pretTotal =
-              latime * selectedProduct.D245.SetCasetaSuprapus195.pret +
-              latime * selectedProduct.D245.Izolatie195.pret +
-              latime * selectedProduct.D245.ProfilAdaptor.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.AxOctogonal40.pret +
-              ((parseFloat(inaltime) * 100) / 3.9) *
-                (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.LamelaAluminiu.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.LamelaTerminala.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.FixMobilPlasaPeAx.pret +
-              (parseFloat(inaltime) - 0.15) *
-                2 *
-                selectedProduct.D245.GhidajPVC.pret +
-              (parseFloat(inaltime) - 0.15) *
-                4 *
-                selectedProduct.D245.PerieGhidaj.pret +
-              1 * selectedProduct.D245.SetAccesorii195.pret +
-              6 * selectedProduct.D245.Banda.pret +
-              1 * selectedProduct.D245.Automat.pret +
-              2 * selectedProduct.D245.OpritorPVC.pret +
-              65 * selectedProduct.D245.Arriter.pret +
-              1 * selectedProduct.D245.SuplimentareAccesorii.pret;
+                  return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+                }
+                if (inaltime > 2.45 && inaltime <= 2.6) {
+                  let pretTotal =
+                    latime * selectedProduct.D245.SetCasetaSuprapus195.pret +
+                    latime * selectedProduct.D245.Izolatie195.pret +
+                    latime * selectedProduct.D245.ProfilAdaptor.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.AxOctogonal40.pret +
+                    ((parseFloat(inaltime) * 100) / 3.9) *
+                      (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.LamelaAluminiu.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.LamelaTerminala.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.FixMobilPlasaPeAx.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      2 *
+                      selectedProduct.D245.GhidajPVC.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      4 *
+                      selectedProduct.D245.PerieGhidaj.pret +
+                    1 * selectedProduct.D245.SetAccesorii195.pret +
+                    6 * selectedProduct.D245.Banda.pret +
+                    1 * selectedProduct.D245.Automat.pret +
+                    2 * selectedProduct.D245.OpritorPVC.pret +
+                    65 * selectedProduct.D245.Arriter.pret +
+                    1 * selectedProduct.D245.SuplimentareAccesorii.pret;
 
-            if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D245.Inel40.pret;
-            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D245.Inel40.pret;
-            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D245.Inel40.pret;
-            } else pretTotal += 6 * selectedProduct.D245.Inel40.pret;
-            return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
-          }
-        }
-        if (checkBoxMotor) {
-          if (inaltime >= 0.5 && inaltime <= 2.4) {
-            let pretTotal =
-              latime * selectedProduct.D195.SetCasetaSuprapus195.pret +
-              latime * selectedProduct.D195.Izolatie195.pret +
-              latime * selectedProduct.D195.ProfilAdaptor.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.AxOctogonal40.pret +
-              ((parseFloat(inaltime) * 100) / 3.9) *
-                (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.LamelaAluminiu.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.LamelaTerminala.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D195.GarnituraDeContact.pret +
-              (parseFloat(inaltime) - 0.15) *
-                2 *
-                selectedProduct.D195.GhidajPVC.pret +
-              (parseFloat(inaltime) - 0.15) *
-                4 *
-                selectedProduct.D195.PerieGhidaj.pret +
-              1 * selectedProduct.D195.SetAccesorii195.pret +
-              6 * selectedProduct.D195.Banda.pret +
-              1 * selectedProduct.D195.Automat.pret +
-              2 * selectedProduct.D195.OpritorPVC.pret +
-              65 * selectedProduct.D195.Arriter.pret +
-              1 * selectedProduct.D195.SuplimentareAccesorii.pret;
+                  if (parseFloat(latime) <= 1) {
+                    pretTotal += 3 * selectedProduct.D245.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1 &&
+                    parseFloat(latime) <= 1.5
+                  ) {
+                    pretTotal += 4 * selectedProduct.D245.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1.5 &&
+                    parseFloat(latime) <= 2
+                  ) {
+                    pretTotal += 5 * selectedProduct.D245.Inel40.pret;
+                  } else pretTotal += 6 * selectedProduct.D245.Inel40.pret;
+                  return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+                }
+              }
+              if (checkBoxMotor) {
+                if (inaltime >= 0.5 && inaltime <= 2.4) {
+                  let pretTotal =
+                    latime * selectedProduct.D195.SetCasetaSuprapus195.pret +
+                    latime * selectedProduct.D195.Izolatie195.pret +
+                    latime * selectedProduct.D195.ProfilAdaptor.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.AxOctogonal40.pret +
+                    ((parseFloat(inaltime) * 100) / 3.9) *
+                      (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.LamelaAluminiu.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.LamelaTerminala.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D195.GarnituraDeContact.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      2 *
+                      selectedProduct.D195.GhidajPVC.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      4 *
+                      selectedProduct.D195.PerieGhidaj.pret +
+                    1 * selectedProduct.D195.SetAccesorii195.pret +
+                    6 * selectedProduct.D195.Banda.pret +
+                    1 * selectedProduct.D195.Automat.pret +
+                    2 * selectedProduct.D195.OpritorPVC.pret +
+                    65 * selectedProduct.D195.Arriter.pret +
+                    1 * selectedProduct.D195.SuplimentareAccesorii.pret;
 
-            if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D195.Inel40.pret;
-            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D195.Inel40.pret;
-            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D195.Inel40.pret;
-            } else pretTotal += 6 * selectedProduct.D195.Inel40.pret;
+                  if (parseFloat(latime) <= 1) {
+                    pretTotal += 3 * selectedProduct.D195.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1 &&
+                    parseFloat(latime) <= 1.5
+                  ) {
+                    pretTotal += 4 * selectedProduct.D195.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1.5 &&
+                    parseFloat(latime) <= 2
+                  ) {
+                    pretTotal += 5 * selectedProduct.D195.Inel40.pret;
+                  } else pretTotal += 6 * selectedProduct.D195.Inel40.pret;
 
-            if (
-              selectedMotorSomfySmart === '71' ||
-              selectedMotorSomfySmart === '118' ||
-              selectedMotorSomfySmart === '80' ||
-              selectedMotorSomfySmart === '130'
-            ) {
-              pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
-            } else if (
-              selectedMotorSomfySmart === '68' ||
-              selectedMotorSomfySmart === '84' ||
-              selectedMotorSomfySmart === '85' ||
-              selectedMotorSomfySmart === '110'
-            ) {
-              pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
+                  if (
+                    selectedMotorSomfySmart === '71' ||
+                    selectedMotorSomfySmart === '118' ||
+                    selectedMotorSomfySmart === '80' ||
+                    selectedMotorSomfySmart === '130'
+                  ) {
+                    pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
+                  } else if (
+                    selectedMotorSomfySmart === '68' ||
+                    selectedMotorSomfySmart === '84' ||
+                    selectedMotorSomfySmart === '85' ||
+                    selectedMotorSomfySmart === '110'
+                  ) {
+                    pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
+                  }
+                  return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+                }
+                if (inaltime >= 2.4 && inaltime <= 2.6) {
+                  let pretTotal =
+                    latime * selectedProduct.D245.SetCasetaSuprapus195.pret +
+                    latime * selectedProduct.D245.Izolatie195.pret +
+                    latime * selectedProduct.D245.ProfilAdaptor.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.AxOctogonal40.pret +
+                    ((parseFloat(inaltime) * 100) / 3.9) *
+                      (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.LamelaAluminiu.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.LamelaTerminala.pret +
+                    (parseFloat(latime) - 0.05) *
+                      selectedProduct.D245.FixMobilPlasaPeAx.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      2 *
+                      selectedProduct.D245.GhidajPVC.pret +
+                    (parseFloat(inaltime) - 0.15) *
+                      4 *
+                      selectedProduct.D245.PerieGhidaj.pret +
+                    1 * selectedProduct.D245.SetAccesorii195.pret +
+                    6 * selectedProduct.D245.Banda.pret +
+                    1 * selectedProduct.D245.Automat.pret +
+                    2 * selectedProduct.D245.OpritorPVC.pret +
+                    65 * selectedProduct.D245.Arriter.pret +
+                    1 * selectedProduct.D245.SuplimentareAccesorii.pret;
+
+                  if (parseFloat(latime) <= 1) {
+                    pretTotal += 3 * selectedProduct.D245.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1 &&
+                    parseFloat(latime) <= 1.5
+                  ) {
+                    pretTotal += 4 * selectedProduct.D245.Inel40.pret;
+                  } else if (
+                    parseFloat(latime) > 1.5 &&
+                    parseFloat(latime) <= 2
+                  ) {
+                    pretTotal += 5 * selectedProduct.D245.Inel40.pret;
+                  } else pretTotal += 6 * selectedProduct.D245.Inel40.pret;
+                  if (
+                    selectedMotorSomfySmart === '71' ||
+                    selectedMotorSomfySmart === '118' ||
+                    selectedMotorSomfySmart === '80' ||
+                    selectedMotorSomfySmart === '130'
+                  ) {
+                    pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
+                  } else if (
+                    selectedMotorSomfySmart === '68' ||
+                    selectedMotorSomfySmart === '84' ||
+                    selectedMotorSomfySmart === '85' ||
+                    selectedMotorSomfySmart === '110'
+                  ) {
+                    pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
+                  }
+                  return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+                }
+              }
             }
-            return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+            return 'Latimea este mai mare de 1.8 m';
           }
-          if (inaltime >= 2.4 && inaltime <= 2.6) {
-            let pretTotal =
-              latime * selectedProduct.D245.SetCasetaSuprapus195.pret +
-              latime * selectedProduct.D245.Izolatie195.pret +
-              latime * selectedProduct.D245.ProfilAdaptor.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.AxOctogonal40.pret +
-              ((parseFloat(inaltime) * 100) / 3.9) *
-                (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.LamelaAluminiu.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.LamelaTerminala.pret +
-              (parseFloat(latime) - 0.05) *
-                selectedProduct.D245.FixMobilPlasaPeAx.pret +
-              (parseFloat(inaltime) - 0.15) *
-                2 *
-                selectedProduct.D245.GhidajPVC.pret +
-              (parseFloat(inaltime) - 0.15) *
-                4 *
-                selectedProduct.D245.PerieGhidaj.pret +
-              1 * selectedProduct.D245.SetAccesorii195.pret +
-              6 * selectedProduct.D245.Banda.pret +
-              1 * selectedProduct.D245.Automat.pret +
-              2 * selectedProduct.D245.OpritorPVC.pret +
-              65 * selectedProduct.D245.Arriter.pret +
-              1 * selectedProduct.D245.SuplimentareAccesorii.pret;
 
-            if (parseFloat(latime) <= 1) {
-              pretTotal += 3 * selectedProduct.D245.Inel40.pret;
-            } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-              pretTotal += 4 * selectedProduct.D245.Inel40.pret;
-            } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-              pretTotal += 5 * selectedProduct.D245.Inel40.pret;
-            } else pretTotal += 6 * selectedProduct.D245.Inel40.pret;
-            if (
-              selectedMotorSomfySmart === '71' ||
-              selectedMotorSomfySmart === '118' ||
-              selectedMotorSomfySmart === '80' ||
-              selectedMotorSomfySmart === '130'
-            ) {
-              pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
-            } else if (
-              selectedMotorSomfySmart === '68' ||
-              selectedMotorSomfySmart === '84' ||
-              selectedMotorSomfySmart === '85' ||
-              selectedMotorSomfySmart === '110'
-            ) {
-              pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
+          if (checkBoxSimplu) {
+            if (!checkBoxMotor) {
+              if (inaltime >= 0.5 && inaltime <= 2.65) {
+                let pretTotal =
+                  latime * selectedProduct.D195S.SetCasetaSuprapus195.pret +
+                  latime * selectedProduct.D195S.Izolatie195.pret +
+                  latime * selectedProduct.D195S.ProfilAdaptor.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.AxOctogonal40.pret +
+                  ((parseFloat(inaltime) * 100) / 3.9) *
+                    (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.LamelaAluminiu.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.LamelaTerminala.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.GarnituraDeContact.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    2 *
+                    selectedProduct.D195S.GhidajPVC.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    4 *
+                    selectedProduct.D195S.PerieGhidaj.pret +
+                  1 * selectedProduct.D195S.SetAccesorii195.pret +
+                  6 * selectedProduct.D195S.Banda.pret +
+                  1 * selectedProduct.D195S.Automat.pret +
+                  2 * selectedProduct.D195S.OpritorPVC.pret +
+                  65 * selectedProduct.D195S.Arriter.pret +
+                  1 * selectedProduct.D195S.SuplimentareAccesorii.pret;
+
+                if (parseFloat(latime) <= 1) {
+                  pretTotal += 3 * selectedProduct.D195S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1 &&
+                  parseFloat(latime) <= 1.5
+                ) {
+                  pretTotal += 4 * selectedProduct.D195S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1.5 &&
+                  parseFloat(latime) <= 2
+                ) {
+                  pretTotal += 5 * selectedProduct.D195S.Inel40.pret;
+                } else pretTotal += 6 * selectedProduct.D195S.Inel40.pret;
+
+                return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+              }
+              if (inaltime > 2.65 && inaltime <= 4.15) {
+                let pretTotal =
+                  latime * selectedProduct.D245S.SetCasetaSuprapus195.pret +
+                  latime * selectedProduct.D245S.Izolatie195.pret +
+                  latime * selectedProduct.D245S.ProfilAdaptor.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.AxOctogonal40.pret +
+                  ((parseFloat(inaltime) * 100) / 3.9) *
+                    (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.LamelaAluminiu.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.LamelaTerminala.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.FixMobilPlasaPeAx.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    2 *
+                    selectedProduct.D245S.GhidajPVC.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    4 *
+                    selectedProduct.D245S.PerieGhidaj.pret +
+                  1 * selectedProduct.D245S.SetAccesorii195.pret +
+                  6 * selectedProduct.D245S.Banda.pret +
+                  1 * selectedProduct.D245S.Automat.pret +
+                  2 * selectedProduct.D245S.OpritorPVC.pret +
+                  65 * selectedProduct.D245S.Arriter.pret +
+                  1 * selectedProduct.D245S.SuplimentareAccesorii.pret;
+
+                if (parseFloat(latime) <= 1) {
+                  pretTotal += 3 * selectedProduct.D245S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1 &&
+                  parseFloat(latime) <= 1.5
+                ) {
+                  pretTotal += 4 * selectedProduct.D245S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1.5 &&
+                  parseFloat(latime) <= 2
+                ) {
+                  pretTotal += 5 * selectedProduct.D245S.Inel40.pret;
+                } else pretTotal += 6 * selectedProduct.D245S.Inel40.pret;
+                return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+              }
             }
-            return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+            if (checkBoxMotor) {
+              if (inaltime >= 0.5 && inaltime <= 2.65) {
+                let pretTotal =
+                  latime * selectedProduct.D195S.SetCasetaSuprapus195.pret +
+                  latime * selectedProduct.D195S.Izolatie195.pret +
+                  latime * selectedProduct.D195S.ProfilAdaptor.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.AxOctogonal40.pret +
+                  ((parseFloat(inaltime) * 100) / 3.9) *
+                    (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.LamelaAluminiu.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.LamelaTerminala.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D195S.GarnituraDeContact.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    2 *
+                    selectedProduct.D195S.GhidajPVC.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    4 *
+                    selectedProduct.D195S.PerieGhidaj.pret +
+                  1 * selectedProduct.D195S.SetAccesorii195.pret +
+                  6 * selectedProduct.D195S.Banda.pret +
+                  1 * selectedProduct.D195S.Automat.pret +
+                  2 * selectedProduct.D195S.OpritorPVC.pret +
+                  65 * selectedProduct.D195S.Arriter.pret +
+                  1 * selectedProduct.D195S.SuplimentareAccesorii.pret;
+
+                if (parseFloat(latime) <= 1) {
+                  pretTotal += 3 * selectedProduct.D195S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1 &&
+                  parseFloat(latime) <= 1.5
+                ) {
+                  pretTotal += 4 * selectedProduct.D195S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1.5 &&
+                  parseFloat(latime) <= 2
+                ) {
+                  pretTotal += 5 * selectedProduct.D195S.Inel40.pret;
+                } else pretTotal += 6 * selectedProduct.D195S.Inel40.pret;
+
+                if (
+                  selectedMotorSomfySmart === '71' ||
+                  selectedMotorSomfySmart === '118' ||
+                  selectedMotorSomfySmart === '80' ||
+                  selectedMotorSomfySmart === '130'
+                ) {
+                  pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
+                } else if (
+                  selectedMotorSomfySmart === '68' ||
+                  selectedMotorSomfySmart === '84' ||
+                  selectedMotorSomfySmart === '85' ||
+                  selectedMotorSomfySmart === '110'
+                ) {
+                  pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
+                }
+                return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+              }
+              if (inaltime >= 2.65 && inaltime <= 4.15) {
+                let pretTotal =
+                  latime * selectedProduct.D245S.SetCasetaSuprapus195.pret +
+                  latime * selectedProduct.D245S.Izolatie195.pret +
+                  latime * selectedProduct.D245S.ProfilAdaptor.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.AxOctogonal40.pret +
+                  ((parseFloat(inaltime) * 100) / 3.9) *
+                    (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.LamelaAluminiu.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.LamelaTerminala.pret +
+                  (parseFloat(latime) - 0.05) *
+                    selectedProduct.D245S.FixMobilPlasaPeAx.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    2 *
+                    selectedProduct.D245S.GhidajPVC.pret +
+                  (parseFloat(inaltime) - 0.15) *
+                    4 *
+                    selectedProduct.D245S.PerieGhidaj.pret +
+                  1 * selectedProduct.D245S.SetAccesorii195.pret +
+                  6 * selectedProduct.D245S.Banda.pret +
+                  1 * selectedProduct.D245S.Automat.pret +
+                  2 * selectedProduct.D245S.OpritorPVC.pret +
+                  65 * selectedProduct.D245S.Arriter.pret +
+                  1 * selectedProduct.D245S.SuplimentareAccesorii.pret;
+
+                if (parseFloat(latime) <= 1) {
+                  pretTotal += 3 * selectedProduct.D245S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1 &&
+                  parseFloat(latime) <= 1.5
+                ) {
+                  pretTotal += 4 * selectedProduct.D245S.Inel40.pret;
+                } else if (
+                  parseFloat(latime) > 1.5 &&
+                  parseFloat(latime) <= 2
+                ) {
+                  pretTotal += 5 * selectedProduct.D245S.Inel40.pret;
+                } else pretTotal += 6 * selectedProduct.D245S.Inel40.pret;
+                if (
+                  selectedMotorSomfySmart === '71' ||
+                  selectedMotorSomfySmart === '118' ||
+                  selectedMotorSomfySmart === '80' ||
+                  selectedMotorSomfySmart === '130'
+                ) {
+                  pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
+                } else if (
+                  selectedMotorSomfySmart === '68' ||
+                  selectedMotorSomfySmart === '84' ||
+                  selectedMotorSomfySmart === '85' ||
+                  selectedMotorSomfySmart === '110'
+                ) {
+                  pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
+                }
+                return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
+              }
+            }
           }
         }
       }
+      return 'Latimea este mai mare de 2.5 m';
     }
-
     return 0;
   };
 
@@ -633,6 +875,15 @@ function CalculatorRulouriSuprapusCuPlasaPage() {
                     />
                   }
                   label="Acționare automată"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      onChange={handleCheckBoxSimplu}
+                      checked={checkBoxSimplu}
+                    />
+                  }
+                  label="Rulou Simplu"
                 />
               </Grid>
             </Grid>

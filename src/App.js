@@ -11,7 +11,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
-import ProdusEditPage from './Screens/ProdusEditPage';
 import CalculatorRulouriAluminiuPage from './Screens/CalculatorRulouriAluminiuPage';
 import CosCumparaturi from './Screens/CosCumparaturi';
 import ComenziSinglePage from './Screens/ComenziSinglePage';
@@ -27,6 +26,21 @@ import CreateProdusSuprapus from './Screens/CreateProdusSuprapusPage';
 import CalculatorRulouriSuprapusPage from './Screens/CalculatorRulouriSuprapusPage';
 import CreateProdusSuprapusCuPlasa from './Screens/CreateProdusSuprapusCuPlasaPage';
 import CalculatorRulouriSuprapusCuPlasaPage from './Screens/CalculatorRulouriSuprapusCuPlasaPage';
+import CreateProdusPVC from './Screens/CreateProdusPVCPage';
+import CalculatorRulouriPVCPage from './Screens/CalculatorPVCPage';
+import CreateProdusPlasaCuBalamale17x25 from './Screens/CreateProdusPlasaCuBalamale17x25Page';
+import CreateProdusPlasaCuClema9x32 from './Screens/CreateProdusPlasaCuClema9x32Page';
+import CreateProdusPlasaInGol31x11 from './Screens/CreateProdusPlasaInGol31x11Page';
+import CreateProdusPlasaTipRulou from './Screens/CreateProdusPlasaTipRulouPage';
+import CreateProdusUsaCuPerie from './Screens/CreateProdusUsaCuPeriePage';
+import CreateProdusUsaMagnetica from './Screens/CreateProdusUsaMagneticaPage';
+import CalculatorPlasaCuBalamalePage from './Screens/CalculatorPlasaCuBalamale17x25Page';
+import CalculatorPlasaCuClemaPage from './Screens/CalculatorPlasaCuClema9x32Page';
+import CalculatorPlasaInGolPage from './Screens/CalculatorPlasaInGolPage';
+import CalculatorPlasaTipRulouPage from './Screens/CalculatorPlasaTipRulouPage';
+import CalculatorUsaCuPeriePage from './Screens/CalculatorUsaCuPeriePage';
+import CalculatorUsaMagneticaPage from './Screens/CalculatorUsaMagneticaPage';
+import RulouPVCPage from './Screens/RulouPVCPage';
 
 function App() {
   return (
@@ -38,7 +52,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/signin" element={<SignInPage />} />
             {/* ProtectedRoute */}
-
+            <Route path="/ruloupvc" element={<RulouPVCPage />} />
             <Route
               path="/rulourialuminiu"
               element={
@@ -60,6 +74,62 @@ function App() {
               element={
                 <ProtectedRoute>
                   <CalculatorRulouriTencuibilePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/lamela"
+              element={
+                <ProtectedRoute>
+                  <CalculatorRulouriPVCPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/plasacubalama17x25"
+              element={
+                <ProtectedRoute>
+                  <CalculatorPlasaCuBalamalePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/plasaingol"
+              element={
+                <ProtectedRoute>
+                  <CalculatorPlasaInGolPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/plasatiprulou"
+              element={
+                <ProtectedRoute>
+                  <CalculatorPlasaTipRulouPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/usacuperie"
+              element={
+                <ProtectedRoute>
+                  <CalculatorUsaCuPeriePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/usamagnetica"
+              element={
+                <ProtectedRoute>
+                  <CalculatorUsaMagneticaPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/plasacuclema9x32"
+              element={
+                <ProtectedRoute>
+                  <CalculatorPlasaCuClemaPage />
                 </ProtectedRoute>
               }
             />
@@ -87,7 +157,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/comenzi"
               element={
@@ -112,7 +181,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             {/*Admin Route */}
             <Route
               path="/signup"
@@ -123,14 +191,6 @@ function App() {
               }
             />
             <Route
-              path="/admin/produs/:id"
-              element={
-                <ProtectedRoute>
-                  <ProdusEditPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
               path="/oferta/:id"
               element={
                 <ProtectedRoute>
@@ -138,7 +198,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/produse"
               element={
@@ -160,6 +219,62 @@ function App() {
               element={
                 <AdminRoute>
                   <CreateProdusCuPlasa />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/produsnoulamela"
+              element={
+                <AdminRoute>
+                  <CreateProdusPVC />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/produsnouPlasaCuBalamale17x25"
+              element={
+                <AdminRoute>
+                  <CreateProdusPlasaCuBalamale17x25 />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/produsnouPlasaCuClema9x32"
+              element={
+                <AdminRoute>
+                  <CreateProdusPlasaCuClema9x32 />
+                </AdminRoute>
+              }
+            />{' '}
+            <Route
+              path="/produsnouPlasaInGol31x11"
+              element={
+                <AdminRoute>
+                  <CreateProdusPlasaInGol31x11 />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/produsnouPlasaTipRulou"
+              element={
+                <AdminRoute>
+                  <CreateProdusPlasaTipRulou />
+                </AdminRoute>
+              }
+            />{' '}
+            <Route
+              path="/produsnouUsaCuPerie"
+              element={
+                <AdminRoute>
+                  <CreateProdusUsaCuPerie />
+                </AdminRoute>
+              }
+            />{' '}
+            <Route
+              path="/produsnouUsaMagnetica"
+              element={
+                <AdminRoute>
+                  <CreateProdusUsaMagnetica />
                 </AdminRoute>
               }
             />

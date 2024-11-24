@@ -51,7 +51,7 @@ const reducer = (state, action) => {
   }
 };
 
-function CalculatorRulouriSuprapusPage() {
+function CalculatorUsaMagneticaPage() {
   //Template
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
@@ -66,61 +66,30 @@ function CalculatorRulouriSuprapusPage() {
   //Constante
   const [selectedCuloare, setSelectedCuloare] = useState('');
   const [selectedProdus, setSelectedProdus] = useState('');
-  const [actionareInterior, setActionareInterior] = useState('');
   const [inaltime, setInaltime] = useState('');
   const [latime, setLatime] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [culoareUnica, setCuloareUnica] = useState([]);
-  const [checkBoxExcludeD137, setCheckBoxExcludeD137] = useState(false);
-  const [checkBoxManual, setCheckBoxManual] = useState(false);
-  const [checkBoxMotor, setCheckBoxMotor] = useState(false);
-  const [bandaSnur, setBandaSnur] = useState('');
-  const [selectedMotor, setSelectedMotor] = useState('');
-  const [selectedMotorSomfySmart, setSelectedMotorSomfySmart] = useState('');
   const [produs, setProdus] = useState('');
   const [culoare, setCuloare] = useState('');
-  const [balcon, setBalcon] = useState(false);
   const [mentiuni, setMentiuni] = useState('');
   const [adaos, setAdaos] = useState('');
-  const [tipMotor, setTipMotor] = useState('');
-  const [actionareMotor, setActionareMotor] = useState('');
   const [user, setUser] = useState('');
   const [pret, setPret] = useState('');
+  const [distantier, setDistantier] = useState(false);
 
   //HandleChange
   const handleChangeProduct = (event) => {
     setSelectedProdus(event.target.value);
   };
-  const handleChangeActionareInterior = (event) => {
-    setActionareInterior(event.target.value);
-  };
-  const handleChangeBandaSnur = (event) => {
-    setBandaSnur(event.target.value);
-  };
-  const handleChangeSelectedMotor = (event) => {
-    setSelectedMotor(event.target.value);
-  };
-  const handleChangeSelectedMotorSomfySmart = (event) => {
-    setSelectedMotorSomfySmart(event.target.value);
-  };
-  const handleCheckBoxExcludeD137 = () => {
-    setCheckBoxExcludeD137(!checkBoxExcludeD137);
-  };
-  const handleCheckBoxManual = () => {
-    setCheckBoxManual(!checkBoxManual);
-    setCheckBoxMotor(false);
-  };
-
-  const handleCheckBoxMotor = () => {
-    setCheckBoxMotor(!checkBoxMotor);
-    setCheckBoxManual(false);
-    setSelectedMotorSomfySmart('');
-    setSelectedMotor('');
-  };
   const handleChangeColor = (event) => {
     const selectedColor = event.target.value;
     setSelectedCuloare(selectedColor);
   };
+  const handleChangeCheckboxDistantier = (event) => {
+    setDistantier(!distantier);
+  };
+
   const total = carts.reduce((acc, item) => acc + item.pret, 0);
   // =============== Filtrare culoare
 
@@ -141,9 +110,12 @@ function CalculatorRulouriSuprapusPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`${API_LINK}/api/produsesuprapus`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `${API_LINK}/api/produseUsaMagnetica`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: 'FETCH_Produs_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_Produs_FAIL', payload: err.message });
@@ -192,13 +164,9 @@ function CalculatorRulouriSuprapusPage() {
           culoare,
           latime,
           inaltime,
-          balcon,
-          actionareInterior,
-          bandaSnur,
           mentiuni,
+          distantier,
           adaos,
-          tipMotor,
-          actionareMotor,
           pret: numericPret,
           user,
         },
@@ -208,18 +176,12 @@ function CalculatorRulouriSuprapusPage() {
       );
       setSelectedCuloare('');
       setSelectedProdus('');
-      setSelectedMotor('');
-      setSelectedMotorSomfySmart('');
       setProdus(''); // înlocuiți cu valoarea inițială a lui produs
       setCuloare(''); // înlocuiți cu valoarea inițială a lui culoare
       setLatime(''); // înlocuiți cu valoarea inițială a lui latime
       setInaltime(''); // înlocuiți cu valoarea inițială a lui inaltime
-      setActionareInterior(''); // înlocuiți cu valoarea inițială a lui actionareInterior
-      setBandaSnur(''); // înlocuiți cu valoarea inițială a lui bandaSnur
       setMentiuni(''); // înlocuiți cu valoarea inițială a lui mentiuni
       setAdaos(''); // înlocuiti cu valoarea inițiala a lui adaos
-      setTipMotor(''); // înlocuiți cu valoarea inițială a lui tipMotor
-      setActionareMotor(''); // înlocuiți cu valoarea inițială a lui actionareMotor
       setPret(''); // înlocuiți cu valoarea inițială a lui pret
       setUser(''); // înlocuiți cu valoarea inițială a lui user
       await fetchCartData();
@@ -269,103 +231,20 @@ function CalculatorRulouriSuprapusPage() {
         (produs) => produs._id === selectedProdus
       );
       if (selectedProdus) {
-        if (latime <= 2.5) {
-          if (!checkBoxMotor) {
-            if (inaltime >= 0.5 && inaltime <= 2.8) {
-              let pretTotal =
-                latime * selectedProduct.D200.SetCasetaSuprapus195.pret +
-                latime * selectedProduct.D200.Izolatie195.pret +
-                latime * selectedProduct.D200.ProfilAdaptor.pret +
-                (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.AxOctogonal40.pret +
-                ((parseFloat(inaltime) * 100) / 3.9) *
-                  (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.LamelaAluminiu.pret +
-                (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.LamelaTerminala.pret +
-                (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.GarnituraDeContact.pret +
-                (parseFloat(inaltime) - 0.15) *
-                  2 *
-                  selectedProduct.D200.GhidajPVC.pret +
-                (parseFloat(inaltime) - 0.15) *
-                  4 *
-                  selectedProduct.D200.PerieGhidaj.pret +
-                1 * selectedProduct.D200.SetAccesorii195.pret +
-                6 * selectedProduct.D200.Banda.pret +
-                1 * selectedProduct.D200.Automat.pret +
-                2 * selectedProduct.D200.OpritorPVC.pret +
-                65 * selectedProduct.D200.Arriter.pret +
-                1 * selectedProduct.D200.SuplimentareAccesorii.pret;
-
-              if (parseFloat(latime) <= 1) {
-                pretTotal += 3 * selectedProduct.D200.Inel40.pret;
-              } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-                pretTotal += 4 * selectedProduct.D200.Inel40.pret;
-              } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-                pretTotal += 5 * selectedProduct.D200.Inel40.pret;
-              } else pretTotal += 6 * selectedProduct.D200.Inel40.pret;
-
-              return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
-            }
+        if (distantier) {
+          let pretTotal = latime * inaltime * selectedProduct.Pret;
+          if (inaltime * latime <= 1.5) {
+            return (pretTotal = 87) + 50;
           }
-          if (checkBoxMotor) {
-            if (inaltime >= 0.5 && inaltime <= 2.8) {
-              let pretTotal =
-                latime * selectedProduct.D200.SetCasetaSuprapus195.pret +
-                latime * selectedProduct.D200.Izolatie195.pret +
-                latime * selectedProduct.D200.ProfilAdaptor.pret +
-                (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.AxOctogonal40.pret +
-                ((parseFloat(inaltime) * 100) / 3.9) *
-                  (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.LamelaAluminiu.pret +
-                (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.LamelaTerminala.pret +
-                (parseFloat(latime) - 0.05) *
-                  selectedProduct.D200.GarnituraDeContact.pret +
-                (parseFloat(inaltime) - 0.15) *
-                  2 *
-                  selectedProduct.D200.GhidajPVC.pret +
-                (parseFloat(inaltime) - 0.15) *
-                  4 *
-                  selectedProduct.D200.PerieGhidaj.pret +
-                1 * selectedProduct.D200.SetAccesorii195.pret +
-                6 * selectedProduct.D200.Banda.pret +
-                1 * selectedProduct.D200.Automat.pret +
-                2 * selectedProduct.D200.OpritorPVC.pret +
-                65 * selectedProduct.D200.Arriter.pret +
-                1 * selectedProduct.D200.SuplimentareAccesorii.pret;
-
-              if (parseFloat(latime) <= 1) {
-                pretTotal += 3 * selectedProduct.D200.Inel40.pret;
-              } else if (parseFloat(latime) > 1 && parseFloat(latime) <= 1.5) {
-                pretTotal += 4 * selectedProduct.D200.Inel40.pret;
-              } else if (parseFloat(latime) > 1.5 && parseFloat(latime) <= 2) {
-                pretTotal += 5 * selectedProduct.D200.Inel40.pret;
-              } else pretTotal += 6 * selectedProduct.D200.Inel40.pret;
-
-              if (
-                selectedMotorSomfySmart === '71' ||
-                selectedMotorSomfySmart === '118' ||
-                selectedMotorSomfySmart === '80' ||
-                selectedMotorSomfySmart === '130'
-              ) {
-                pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Somfy
-              } else if (
-                selectedMotorSomfySmart === '68' ||
-                selectedMotorSomfySmart === '84' ||
-                selectedMotorSomfySmart === '85' ||
-                selectedMotorSomfySmart === '110'
-              ) {
-                pretTotal += parseFloat(selectedMotorSomfySmart); // Adaugă valoarea pentru Smart
-              }
-              return pretTotal.toFixed(2); // Afișăm doar 5 zecimale pentru preț
-            }
+          return pretTotal + 50; // Afișăm doar 5 zecimale pentru preț
+        } else {
+          let pretTotal = latime * inaltime * selectedProduct.Pret;
+          if (inaltime * latime <= 1.5) {
+            return (pretTotal = 87);
           }
+          return pretTotal; // Afișăm doar 5 zecimale pentru preț
         }
       }
-      return 'Latimea este mai mare de 2.5 m';
     }
 
     return 0;
@@ -467,7 +346,7 @@ function CalculatorRulouriSuprapusPage() {
                           </MenuItem>
                         ))
                       ) : (
-                        <MenuItem disabled>Selectati culoarea</MenuItem>
+                        <MenuItem disabled>Selectati produsul</MenuItem>
                       )}
                     </Select>
                   </FormControl>
@@ -517,169 +396,20 @@ function CalculatorRulouriSuprapusPage() {
               </Grid>
             </Grid>
             <Grid container>
-              <Grid item xs={12} sx={{ mb: 1 }}>
+              <Grid item xs={12}>
                 <FormControlLabel
                   control={
                     <Checkbox
-                      onChange={(event) => {
-                        handleCheckBoxExcludeD137(event);
-                        setBalcon(event.target.checked);
-                      }}
+                      onChange={handleChangeCheckboxDistantier}
+                      checked={distantier}
                     />
                   }
-                  label="Balcon împărțit"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={handleCheckBoxManual}
-                      checked={checkBoxManual}
-                    />
-                  }
-                  label="Acționare manuală"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      onChange={handleCheckBoxMotor}
-                      checked={checkBoxMotor}
-                    />
-                  }
-                  label="Acționare automată"
+                  label="Distantier (+50 euro)"
                 />
               </Grid>
             </Grid>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <FormControl fullWidth>
-                  <InputLabel id="actionareInterior">
-                    Actionare din interior
-                  </InputLabel>
-                  <Select
-                    labelId="actionareInterior"
-                    id="actionareInterior"
-                    label="Acționare din interior"
-                    value={actionareInterior}
-                    onChange={(event) => {
-                      handleChangeActionareInterior(event);
-                      setActionareInterior(event.target.value);
-                    }}
-                  >
-                    <MenuItem value={'stanga'}>Stanga</MenuItem>
-                    <MenuItem value={'dreapta'}>Dreapta</MenuItem>
-                  </Select>
-                </FormControl>
-                {checkBoxManual && (
-                  <FormControl sx={{ mt: 2 }} fullWidth>
-                    <InputLabel id="bandaSnur">Alege banda sau snur</InputLabel>
-                    <Select
-                      labelId="bandaSnur"
-                      id="bandaSnur"
-                      label="Alege banda sau șnur"
-                      value={bandaSnur}
-                      onChange={(event) => {
-                        handleChangeBandaSnur(event);
-                        setBandaSnur(event.target.value);
-                      }}
-                    >
-                      <MenuItem value={'banda'}>Banda</MenuItem>
-                      <MenuItem value={'snur'}>Snur</MenuItem>
-                    </Select>
-                  </FormControl>
-                )}
-                {checkBoxMotor && (
-                  <FormControl sx={{ mt: 2 }} fullWidth>
-                    <InputLabel id="alegeMotor">
-                      Alege tipul de motor
-                    </InputLabel>
-                    <Select
-                      labelId="alegeMotor"
-                      id="alegeMotor"
-                      label="Alege tipul de motor"
-                      value={selectedMotor}
-                      onChange={(event) => {
-                        handleChangeSelectedMotor(event);
-                        setTipMotor(event.target.value);
-                      }}
-                    >
-                      <MenuItem value={'somfy'}>Somfy</MenuItem>
-                      <MenuItem value={'smart'}>Smart</MenuItem>
-                    </Select>
-                  </FormControl>
-                )}
-                {checkBoxMotor && selectedMotor && (
-                  <FormControl sx={{ mt: 2 }} fullWidth>
-                    <InputLabel id="somfySmart">
-                      Alege întrerupator sau telecomandă
-                    </InputLabel>
-                    <Select
-                      labelId="somfySmart"
-                      id="somfySmart"
-                      label="Alege intrerupator sau telecomanda"
-                      value={selectedMotorSomfySmart}
-                      onChange={(event) => {
-                        handleChangeSelectedMotorSomfySmart(event);
-                        setActionareMotor(event.target.value);
-                      }}
-                    >
-                      {selectedMotor === 'somfy' && inaltime * latime <= 4.3
-                        ? [
-                            <MenuItem key="71" value="71">
-                              Întrerupator
-                            </MenuItem>,
-                            <MenuItem key="118" value="118">
-                              Telecomandă
-                            </MenuItem>,
-                            <MenuItem disabled>
-                              Pentru mai multe opțiuni, vă rugăm să ne
-                              contactați
-                            </MenuItem>,
-                          ]
-                        : selectedMotor === 'somfy' && inaltime * latime > 4.3
-                        ? [
-                            <MenuItem key="80" value="80">
-                              Întrerupator
-                            </MenuItem>,
-                            <MenuItem key="130" value="130">
-                              Telecomandă
-                            </MenuItem>,
-                            <MenuItem disabled>
-                              Pentru mai multe opțiuni, vă rugăm să ne
-                              contactați
-                            </MenuItem>,
-                          ]
-                        : null}
-
-                      {selectedMotor === 'smart' && inaltime * latime <= 4.3
-                        ? [
-                            <MenuItem key="68" value="68">
-                              Întrerupator
-                            </MenuItem>,
-                            <MenuItem key="84" value="84">
-                              Telecomandă
-                            </MenuItem>,
-                            <MenuItem disabled>
-                              Pentru mai multe opțiuni, vă rugăm să ne
-                              contactați
-                            </MenuItem>,
-                          ]
-                        : selectedMotor === 'smart' && inaltime * latime > 4.3
-                        ? [
-                            <MenuItem key="85" value="85">
-                              Întrerupator
-                            </MenuItem>,
-                            <MenuItem key="110" value="110">
-                              Telecomandă
-                            </MenuItem>,
-                            <MenuItem disabled>
-                              Pentru mai multe opțiuni, vă rugăm să ne
-                              contactați
-                            </MenuItem>,
-                          ]
-                        : null}
-                    </Select>
-                  </FormControl>
-                )}
                 <FormGroup>
                   <TextField
                     controlid="mentiuni"
@@ -712,8 +442,8 @@ function CalculatorRulouriSuprapusPage() {
                   variant="subtitle1"
                   sx={{ color: '#06386a', mt: 2 }}
                 >
-                  Preț rulou: {calculPretTotalCuAdaos()}
-                </Typography>
+                  Preț: {calculPretTotalCuAdaos()}
+                </Typography>{' '}
                 <Button
                   type="submit"
                   variant="contained"
@@ -792,7 +522,7 @@ function CalculatorRulouriSuprapusPage() {
                             sx={{ fontWeight: 'bold' }}
                             key={item.produsId}
                           >
-                            Pret: {item.pret} EUR
+                            Pret: {item.pret} Eur
                           </Typography>
                         </Box>
                       </Box>
@@ -842,4 +572,4 @@ function CalculatorRulouriSuprapusPage() {
   );
 }
 
-export default CalculatorRulouriSuprapusPage;
+export default CalculatorUsaMagneticaPage;

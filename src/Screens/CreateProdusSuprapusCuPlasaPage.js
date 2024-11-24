@@ -158,6 +158,106 @@ function CreateProdusSuprapusCuPlasa() {
       pret: '',
     },
   });
+  const [D195S, setD195S] = useState({
+    SetCasetaSuprapus195: {
+      pret: '',
+    },
+    Izolatie195: {
+      pret: '',
+    },
+    ProfilAdaptor: {
+      pret: '',
+    },
+    AxOctogonal40: {
+      pret: '',
+    },
+    LamelaAluminiu: {
+      pret: '',
+    },
+    LamelaTerminala: {
+      pret: '',
+    },
+    GarnituraDeContact: {
+      pret: '',
+    },
+    GhidajPVC: {
+      pret: '',
+    },
+    PerieGhidaj: {
+      pret: '',
+    },
+    Inel40: {
+      pret: '',
+    },
+    SetAccesorii195: {
+      pret: '',
+    },
+    Banda: {
+      pret: '',
+    },
+    Automat: {
+      pret: '',
+    },
+    OpritorPVC: {
+      pret: '',
+    },
+    Arriter: {
+      pret: '',
+    },
+    SuplimentareAccesorii: {
+      pret: '',
+    },
+  });
+  const [D245S, setD245S] = useState({
+    SetCasetaSuprapus195: {
+      pret: '',
+    },
+    Izolatie195: {
+      pret: '',
+    },
+    ProfilAdaptor: {
+      pret: '',
+    },
+    AxOctogonal40: {
+      pret: '',
+    },
+    LamelaAluminiu: {
+      pret: '',
+    },
+    LamelaTerminala: {
+      pret: '',
+    },
+    FixMobilPlasaPeAx: {
+      pret: '',
+    },
+    GhidajPVC: {
+      pret: '',
+    },
+    PerieGhidaj: {
+      pret: '',
+    },
+    Inel40: {
+      pret: '',
+    },
+    SetAccesorii195: {
+      pret: '',
+    },
+    Banda: {
+      pret: '',
+    },
+    Automat: {
+      pret: '',
+    },
+    OpritorPVC: {
+      pret: '',
+    },
+    Arriter: {
+      pret: '',
+    },
+    SuplimentareAccesorii: {
+      pret: '',
+    },
+  });
   //Functie creaza produs
   const createHandler = async (e) => {
     e.preventDefault();
@@ -268,6 +368,106 @@ function CreateProdusSuprapusCuPlasa() {
               pret: D245.SuplimentareAccesorii.pret,
             },
           },
+          D195S: {
+            SetCasetaSuprapus195: {
+              pret: D195S.SetCasetaSuprapus195.pret,
+            },
+            Izolatie195: {
+              pret: D195S.Izolatie195.pret,
+            },
+            ProfilAdaptor: {
+              pret: D195S.ProfilAdaptor.pret,
+            },
+            AxOctogonal40: {
+              pret: D195S.AxOctogonal40.pret,
+            },
+            LamelaAluminiu: {
+              pret: D195S.LamelaAluminiu.pret,
+            },
+            LamelaTerminala: {
+              pret: D195S.LamelaTerminala.pret,
+            },
+            GarnituraDeContact: {
+              pret: D195S.GarnituraDeContact.pret,
+            },
+            GhidajPVC: {
+              pret: D195S.GhidajPVC.pret,
+            },
+            PerieGhidaj: {
+              pret: D195S.PerieGhidaj.pret,
+            },
+            Inel40: {
+              pret: D195S.Inel40.pret,
+            },
+            SetAccesorii195: {
+              pret: D195S.SetAccesorii195.pret,
+            },
+            Banda: {
+              pret: D195S.Banda.pret,
+            },
+            Automat: {
+              pret: D195S.Automat.pret,
+            },
+            OpritorPVC: {
+              pret: D195S.OpritorPVC.pret,
+            },
+            Arriter: {
+              pret: D195S.Arriter.pret,
+            },
+            SuplimentareAccesorii: {
+              pret: D195S.SuplimentareAccesorii.pret,
+            },
+          },
+          D245S: {
+            SetCasetaSuprapus195: {
+              pret: D245S.SetCasetaSuprapus195.pret,
+            },
+            Izolatie195: {
+              pret: D245S.Izolatie195.pret,
+            },
+            ProfilAdaptor: {
+              pret: D245S.ProfilAdaptor.pret,
+            },
+            AxOctogonal40: {
+              pret: D245S.AxOctogonal40.pret,
+            },
+            LamelaAluminiu: {
+              pret: D245S.LamelaAluminiu.pret,
+            },
+            LamelaTerminala: {
+              pret: D245S.LamelaTerminala.pret,
+            },
+            FixMobilPlasaPeAx: {
+              pret: D245S.FixMobilPlasaPeAx.pret,
+            },
+            GhidajPVC: {
+              pret: D245S.GhidajPVC.pret,
+            },
+            PerieGhidaj: {
+              pret: D245S.PerieGhidaj.pret,
+            },
+            Inel40: {
+              pret: D245S.Inel40.pret,
+            },
+            SetAccesorii195: {
+              pret: D245S.SetAccesorii195.pret,
+            },
+            Banda: {
+              pret: D245S.Banda.pret,
+            },
+            Automat: {
+              pret: D245S.Automat.pret,
+            },
+            OpritorPVC: {
+              pret: D245S.OpritorPVC.pret,
+            },
+            Arriter: {
+              pret: D245S.Arriter.pret,
+            },
+            SuplimentareAccesorii: {
+              pret: D245S.SuplimentareAccesorii.pret,
+            },
+          },
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -352,7 +552,7 @@ function CreateProdusSuprapusCuPlasa() {
                 <FormControl type="text" />
               </FormGroup>
             </Grid>
-            <Grid item xs={isSmallScreen ? 12 : 6}>
+            <Grid item xs={isSmallScreen ? 12 : 3}>
               <Typography> D195</Typography>
               <FormGroup>
                 <TextField
@@ -658,7 +858,7 @@ function CreateProdusSuprapusCuPlasa() {
                 />
               </FormGroup>
             </Grid>
-            <Grid item xs={isSmallScreen ? 12 : 6}>
+            <Grid item xs={isSmallScreen ? 12 : 3}>
               <Typography> D245</Typography>
               <FormGroup>
                 <TextField
@@ -954,6 +1154,618 @@ function CreateProdusSuprapusCuPlasa() {
                   variant="outlined"
                   onChange={(e) =>
                     setD245((prevState) => ({
+                      ...prevState,
+                      SuplimentareAccesorii: {
+                        ...prevState.SuplimentareAccesorii,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+              </FormGroup>
+            </Grid>
+            <Grid item xs={isSmallScreen ? 12 : 3}>
+              <Typography> D195 Simplu</Typography>
+              <FormGroup>
+                <TextField
+                  controlid="SetCasetaSuprapus195C1D195S"
+                  sx={{ mt: 2 }}
+                  id="SetCasetaSuprapus195D195S"
+                  label="Introduceți SetCasetaSuprapus195"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      SetCasetaSuprapus195: {
+                        ...prevState.SetCasetaSuprapus195,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="Izolatie195C1D195S"
+                  sx={{ mt: 2 }}
+                  id="Izolatie195C1D195S"
+                  label="Introduceți Izolatie195"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      Izolatie195: {
+                        ...prevState.Izolatie195,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="ProfilAdaptorC1D195S"
+                  sx={{ mt: 2 }}
+                  id="ProfilAdaptorC1D195S"
+                  label="Introduceți ProfilAdaptor"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      ProfilAdaptor: {
+                        ...prevState.ProfilAdaptor,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="AxOctogonal40C1D195S"
+                  sx={{ mt: 2 }}
+                  id="AxOctogonal40C1D195S"
+                  label="Introduceți AxOctogonal40"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      AxOctogonal40: {
+                        ...prevState.AxOctogonal40,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="LamelaAluminiuC1D195S"
+                  sx={{ mt: 2 }}
+                  id="LamelaAluminiuC1D195S"
+                  label="Introduceți LamelaAluminiu"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      LamelaAluminiu: {
+                        ...prevState.LamelaAluminiu,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="LamelaTerminalaC1D195S"
+                  sx={{ mt: 2 }}
+                  id="LamelaTerminalaC1D195S"
+                  label="Introduceți LamelaTerminala"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      LamelaTerminala: {
+                        ...prevState.LamelaTerminala,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="GarnituraDeContactC1D195S"
+                  sx={{ mt: 2 }}
+                  id="GarnituraDeContactC1D195S"
+                  label="Introduceți GarnituraDeContact"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      GarnituraDeContact: {
+                        ...prevState.GarnituraDeContact,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="GhidajPVCC1D195S"
+                  sx={{ mt: 2 }}
+                  id="GhidajPVCC1D195S"
+                  label="Introduceți GhidajPVC"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      GhidajPVC: {
+                        ...prevState.GhidajPVC,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="PerieGhidajC1D195S"
+                  sx={{ mt: 2 }}
+                  id="PerieGhidajC1D195S"
+                  label="Introduceți PerieGhidaj"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      PerieGhidaj: {
+                        ...prevState.PerieGhidaj,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="Inel40C1D195S"
+                  sx={{ mt: 2 }}
+                  id="Inel40C1D195S"
+                  label="Introduceți Inel40"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      Inel40: {
+                        ...prevState.Inel40,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="SetAccesorii195C1D195S"
+                  sx={{ mt: 2 }}
+                  id="SetAccesorii195C1D195S"
+                  label="Introduceți SetAccesorii195"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      SetAccesorii195: {
+                        ...prevState.SetAccesorii195,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="BandaC1D195S"
+                  sx={{ mt: 2 }}
+                  id="BandaC1D195S"
+                  label="Introduceți Banda"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      Banda: {
+                        ...prevState.Banda,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="AutomatC1D195S"
+                  sx={{ mt: 2 }}
+                  id="AutomatC1D195S"
+                  label="Introduceți Automat"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      Automat: {
+                        ...prevState.Automat,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="OpritorPVCC1D195S"
+                  sx={{ mt: 2 }}
+                  id="OpritorPVCC1D195S"
+                  label="Introduceți OpritorPVC"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      OpritorPVC: {
+                        ...prevState.OpritorPVC,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="ArriterC1D195S"
+                  sx={{ mt: 2 }}
+                  id="ArriterC1D195S"
+                  label="Introduceți Arriter"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      Arriter: {
+                        ...prevState.Arriter,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="SuplimentareAccesoriiC1D195S"
+                  sx={{ mt: 2 }}
+                  id="SuplimentareAccesoriiC1D195S"
+                  label="Introduceți SuplimentareAccesorii"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD195S((prevState) => ({
+                      ...prevState,
+                      SuplimentareAccesorii: {
+                        ...prevState.SuplimentareAccesorii,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+              </FormGroup>
+            </Grid>
+            <Grid item xs={isSmallScreen ? 12 : 3}>
+              <Typography> D245 Simplu</Typography>
+              <FormGroup>
+                <TextField
+                  controlid="SetCasetaSuprapus195C1D245S"
+                  sx={{ mt: 2 }}
+                  id="SetCasetaSuprapus195D245S"
+                  label="Introduceți SetCasetaSuprapus195"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      SetCasetaSuprapus195: {
+                        ...prevState.SetCasetaSuprapus195,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="Izolatie195C1D245S"
+                  sx={{ mt: 2 }}
+                  id="Izolatie195C1D245S"
+                  label="Introduceți Izolatie195"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      Izolatie195: {
+                        ...prevState.Izolatie195,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="ProfilAdaptorC1D245S"
+                  sx={{ mt: 2 }}
+                  id="ProfilAdaptorC1D245S"
+                  label="Introduceți ProfilAdaptor"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      ProfilAdaptor: {
+                        ...prevState.ProfilAdaptor,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="AxOctogonal40C1D245S"
+                  sx={{ mt: 2 }}
+                  id="AxOctogonal40C1D245S"
+                  label="Introduceți AxOctogonal40"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      AxOctogonal40: {
+                        ...prevState.AxOctogonal40,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="LamelaAluminiuC1D245S"
+                  sx={{ mt: 2 }}
+                  id="LamelaAluminiuC1D245S"
+                  label="Introduceți LamelaAluminiu"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      LamelaAluminiu: {
+                        ...prevState.LamelaAluminiu,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="LamelaTerminalaC1D245S"
+                  sx={{ mt: 2 }}
+                  id="LamelaTerminalaC1D245S"
+                  label="Introduceți LamelaTerminala"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      LamelaTerminala: {
+                        ...prevState.LamelaTerminala,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="FixMobilPlasaPeAxC1D245S"
+                  sx={{ mt: 2 }}
+                  id="FixMobilPlasaPeAxC1D245S"
+                  label="Introduceți FixMobilPlasaPeAx"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      FixMobilPlasaPeAx: {
+                        ...prevState.FixMobilPlasaPeAx,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="GhidajPVCC1D245S"
+                  sx={{ mt: 2 }}
+                  id="GhidajPVCC1D245S"
+                  label="Introduceți GhidajPVC"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      GhidajPVC: {
+                        ...prevState.GhidajPVC,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="PerieGhidajC1D245S"
+                  sx={{ mt: 2 }}
+                  id="PerieGhidajC1D245S"
+                  label="Introduceți PerieGhidaj"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      PerieGhidaj: {
+                        ...prevState.PerieGhidaj,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="Inel40C1D245S"
+                  sx={{ mt: 2 }}
+                  id="Inel40C1D245S"
+                  label="Introduceți Inel40"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      Inel40: {
+                        ...prevState.Inel40,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="SetAccesorii195C1D245S"
+                  sx={{ mt: 2 }}
+                  id="SetAccesorii195C1D245S"
+                  label="Introduceți SetAccesorii195"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      SetAccesorii195: {
+                        ...prevState.SetAccesorii195,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="BandaC1D245S"
+                  sx={{ mt: 2 }}
+                  id="BandaC1D245S"
+                  label="Introduceți Banda"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      Banda: {
+                        ...prevState.Banda,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="AutomatC1D245S"
+                  sx={{ mt: 2 }}
+                  id="AutomatC1D245S"
+                  label="Introduceți Automat"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      Automat: {
+                        ...prevState.Automat,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="OpritorPVCC1D245S"
+                  sx={{ mt: 2 }}
+                  id="OpritorPVCC1D245S"
+                  label="Introduceți OpritorPVC"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      OpritorPVC: {
+                        ...prevState.OpritorPVC,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="ArriterC1D245S"
+                  sx={{ mt: 2 }}
+                  id="ArriterC1D245S"
+                  label="Introduceți Arriter"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
+                      ...prevState,
+                      Arriter: {
+                        ...prevState.Arriter,
+                        pret: e.target.value,
+                      },
+                    }))
+                  }
+                />
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                <TextField
+                  controlid="SuplimentareAccesoriiC1D245S"
+                  sx={{ mt: 2 }}
+                  id="SuplimentareAccesoriiC1D245S"
+                  label="Introduceți SuplimentareAccesorii"
+                  variant="outlined"
+                  onChange={(e) =>
+                    setD245S((prevState) => ({
                       ...prevState,
                       SuplimentareAccesorii: {
                         ...prevState.SuplimentareAccesorii,

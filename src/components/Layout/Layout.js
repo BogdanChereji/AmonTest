@@ -226,9 +226,9 @@ export default function Layout({ children }) {
           </IconButton>
         </DrawerHeader>
         <Typography ml={2} sx={{ color: '#808eab' }}>
-          Calculator
+          Calculator rulouri
         </Typography>
-        <List dense disabl>
+        <List c>
           <ListItem
             onClick={() => navigate('/rulourialuminiu')}
             className={
@@ -248,7 +248,7 @@ export default function Layout({ children }) {
               />
             </ListItemIcon>
             <ListItemText
-              primary="Rulouri aluminiu"
+              primary="Aluminiu"
               onClick={() => navigate('/rulourialuminiu')}
             />
           </ListItem>
@@ -271,7 +271,7 @@ export default function Layout({ children }) {
               />
             </ListItemIcon>
             <ListItemText
-              primary="Rulouri aluminiu cu plasă"
+              primary="Aluminiu cu plasă"
               onClick={() => navigate('/rulourialuminiucuplasa')}
             />
           </ListItem>
@@ -294,7 +294,7 @@ export default function Layout({ children }) {
               />
             </ListItemIcon>
             <ListItemText
-              primary="Rulouri tencuibile"
+              primary="Tencuibile"
               onClick={() => navigate('/rulouritencuibile')}
             />
           </ListItem>
@@ -317,7 +317,7 @@ export default function Layout({ children }) {
               />
             </ListItemIcon>
             <ListItemText
-              primary="Rulouri tencuibile cu plasă"
+              primary="Tencuibile cu plasă"
               onClick={() => navigate('/ruloutencuibilcuplasa')}
             />
           </ListItem>
@@ -340,7 +340,7 @@ export default function Layout({ children }) {
               />
             </ListItemIcon>
             <ListItemText
-              primary="Rulouri suprapuse"
+              primary="Suprapuse"
               onClick={() => navigate('/rulourisuprapus')}
             />
           </ListItem>
@@ -363,11 +363,233 @@ export default function Layout({ children }) {
               />
             </ListItemIcon>
             <ListItemText
-              primary="Rulouri suprapuse cu plasă"
+              primary="Suprapuse cu plasă"
               onClick={() => navigate('/rulourisuprapuscuplasa')}
             />
           </ListItem>
+          <ListItem
+            onClick={() => navigate('/ruloupvc')}
+            className={
+              location.pathname === '/ruloupvc'
+                ? classes.active
+                : classes.notactive
+            }
+          >
+            <ListItemIcon>
+              <BlindsIcon
+                sx={{ color: '#fff' }}
+                className={
+                  location.pathname === '/ruloupvc'
+                    ? classes.active
+                    : classes.notactive
+                }
+              />
+            </ListItemIcon>
+            <ListItemText
+              primary="Rulou PVC"
+              onClick={() => navigate('/ruloupvc')}
+            />
+          </ListItem>
         </List>
+        <Typography ml={2} sx={{ color: '#808eab' }}>
+          Calculator Accesorii
+        </Typography>
+        <List dense>
+          {userInfo && userInfo.isAdmin ? (
+            <ListItem
+              onClick={() => navigate('/lamela')}
+              className={
+                location.pathname === '/lamela'
+                  ? classes.active
+                  : classes.notactive
+              }
+            >
+              <ListItemIcon>
+                <TvIcon
+                  sx={{ color: '#fff' }}
+                  className={
+                    location.pathname === '/lamela'
+                      ? classes.active
+                      : classes.notactive
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary="Lamele"
+                onClick={() => navigate('/lamela')}
+              />
+            </ListItem>
+          ) : (
+            ''
+          )}
+
+          {userInfo && userInfo.isAdmin ? (
+            <ListItem
+              onClick={() => navigate('/plasacubalama17x25')}
+              className={
+                location.pathname === '/plasacubalama17x25'
+                  ? classes.active
+                  : classes.notactive
+              }
+            >
+              <ListItemIcon>
+                <TvIcon
+                  sx={{ color: '#fff' }}
+                  className={
+                    location.pathname === '/plasacubalama17x25'
+                      ? classes.active
+                      : classes.notactive
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary="Plasa cu balamale 17x25"
+                onClick={() => navigate('/plasacubalama17x25')}
+              />
+            </ListItem>
+          ) : (
+            ''
+          )}
+
+          {userInfo && userInfo.isAdmin ? (
+            <ListItem
+              onClick={() => navigate('/plasacuclema9x32')}
+              className={
+                location.pathname === '/plasacuclema9x32'
+                  ? classes.active
+                  : classes.notactive
+              }
+            >
+              <ListItemIcon>
+                <TvIcon
+                  sx={{ color: '#fff' }}
+                  className={
+                    location.pathname === '/plasacuclema9x32'
+                      ? classes.active
+                      : classes.notactive
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary="Plasa cu clemă 9x32"
+                onClick={() => navigate('/plasacuclema9x32')}
+              />
+            </ListItem>
+          ) : (
+            ''
+          )}
+
+          {userInfo && userInfo.isAdmin ? (
+            <ListItem
+              onClick={() => navigate('/plasaingol')}
+              className={
+                location.pathname === '/plasaingol'
+                  ? classes.active
+                  : classes.notactive
+              }
+            >
+              <ListItemIcon>
+                <TvIcon
+                  sx={{ color: '#fff' }}
+                  className={
+                    location.pathname === '/plasaingol'
+                      ? classes.active
+                      : classes.notactive
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary="Plasa în gol"
+                onClick={() => navigate('/plasaingol')}
+              />
+            </ListItem>
+          ) : (
+            ''
+          )}
+
+          {userInfo && userInfo.isAdmin ? (
+            <ListItem
+              onClick={() => navigate('/plasatiprulou')}
+              className={
+                location.pathname === '/plasatiprulou'
+                  ? classes.active
+                  : classes.notactive
+              }
+            >
+              <ListItemIcon>
+                <TvIcon
+                  sx={{ color: '#fff' }}
+                  className={
+                    location.pathname === '/plasatiprulou'
+                      ? classes.active
+                      : classes.notactive
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary="Plasa tip rulou"
+                onClick={() => navigate('/plasatiprulou')}
+              />
+            </ListItem>
+          ) : (
+            ''
+          )}
+          {userInfo && userInfo.isAdmin ? (
+            <ListItem
+              onClick={() => navigate('/usacuperie')}
+              className={
+                location.pathname === '/usacuperie'
+                  ? classes.active
+                  : classes.notactive
+              }
+            >
+              <ListItemIcon>
+                <TvIcon
+                  sx={{ color: '#fff' }}
+                  className={
+                    location.pathname === '/usacuperie'
+                      ? classes.active
+                      : classes.notactive
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary="Ușă cu perie"
+                onClick={() => navigate('/usacuperie')}
+              />
+            </ListItem>
+          ) : (
+            ''
+          )}
+          {userInfo && userInfo.isAdmin ? (
+            <ListItem
+              onClick={() => navigate('/usamagnetica')}
+              className={
+                location.pathname === '/usamagnetica'
+                  ? classes.active
+                  : classes.notactive
+              }
+            >
+              <ListItemIcon>
+                <TvIcon
+                  sx={{ color: '#fff' }}
+                  className={
+                    location.pathname === '/usamagnetica'
+                      ? classes.active
+                      : classes.notactive
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary="Ușă magnetică"
+                onClick={() => navigate('/usamagnetica')}
+              />
+            </ListItem>
+          ) : (
+            ''
+          )}
+        </List>
+        <Divider />
         <Typography ml={2} sx={{ color: '#808eab' }}>
           Comenzi
         </Typography>

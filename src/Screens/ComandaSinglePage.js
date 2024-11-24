@@ -205,7 +205,7 @@ export default function ComandaSinglePage() {
                 ''
               )}
             </Box>
-            <Box sx={{ marginLeft: 'auto' }}>
+            {/* <Box sx={{ marginLeft: 'auto' }}>
               <Button
                 variant="contained"
                 type="submit"
@@ -220,104 +220,134 @@ export default function ComandaSinglePage() {
                 {' '}
                 Printeaza oferta
               </Button>
-            </Box>
+            </Box> */}
           </Box>
           <Box sx={{ mt: 2 }}>
             <TableContainer>
-              <Table aria-label="collapsible table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell align="left">Produs</TableCell>
-                    <TableCell align="right">Culoare</TableCell>
-                    <TableCell align="right">Înălțime (m)</TableCell>
-                    <TableCell align="right">Lățime (m)</TableCell>
-                    <TableCell align="center">Detalii produs</TableCell>
-                    <TableCell align="right">SubTotal (EUR)</TableCell>
-                    <TableCell />
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {produse.map((product, index) => (
+              {produse.map((product, index) => (
+                <Table aria-label="collapsible table">
+                  {product.bandaSnur !== undefined &&
+                  product.balcon !== undefined &&
+                  product.actionareInterior !== undefined &&
+                  product.tipMotor !== undefined &&
+                  product.actionareMotor !== undefined ? (
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="left">Produs</TableCell>
+                        <TableCell align="right">Culoare</TableCell>
+                        <TableCell align="right">Înălțime (m)</TableCell>
+                        <TableCell align="right">Lățime (m)</TableCell>
+                        <TableCell align="center">Detalii produs</TableCell>
+                        <TableCell align="right">SubTotal (EUR)</TableCell>
+                        <TableCell />
+                      </TableRow>
+                    </TableHead>
+                  ) : (
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="left">Produs</TableCell>
+                        <TableCell align="right">Culoare</TableCell>
+                        <TableCell align="right">Înălțime (m)</TableCell>
+                        <TableCell align="right">Lățime (m)</TableCell>
+                        <TableCell align="center">Distantier</TableCell>
+                        <TableCell align="right">SubTotal (EUR)</TableCell>
+                        <TableCell />
+                      </TableRow>
+                    </TableHead>
+                  )}
+                  <TableBody>
                     <TableRow key={index}>
                       <TableCell align="left">{product.produs}</TableCell>
                       <TableCell align="right">{product.culoare}</TableCell>
                       <TableCell align="right">{product.inaltime}</TableCell>
                       <TableCell align="right">{product.latime}</TableCell>
-                      <TableCell align="center">
-                        <TableCell>
-                          <Accordion>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                              Detalii produs
-                            </AccordionSummary>
-                            <AccordionDetails>
-                              <Table>
-                                <TableHead>
-                                  <TableRow>
-                                    <TableCell align="left">Balcon</TableCell>
-                                    <TableCell align="left">
-                                      Actionare
-                                    </TableCell>
-                                    <TableCell align="left">Manual</TableCell>
-                                    <TableCell align="left">
-                                      Tip Motor
-                                    </TableCell>
-                                    <TableCell align="left">
-                                      Act. Motor
-                                    </TableCell>
-                                  </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                  <TableRow sx={{ textTransform: 'uppercase' }}>
-                                    <TableCell>
-                                      {product.balcon ? 'DA' : 'NU'}
-                                    </TableCell>
-                                    <TableCell>
-                                      {product.actionareInterior}
-                                    </TableCell>
-                                    <TableCell>
-                                      {product.bandaSnur.trim() !== ''
-                                        ? product.bandaSnur
-                                        : 'NU'}
-                                    </TableCell>
-                                    <TableCell>
-                                      {product.tipMotor.trim() !== ''
-                                        ? product.tipMotor
-                                        : 'NU'}
-                                    </TableCell>
-                                    <TableCell>
-                                      {product.actionareMotor.trim() !== ''
-                                        ? ['68', '71', '80', '85'].includes(
-                                            product.actionareMotor
-                                          )
-                                          ? 'Întrerupător'
-                                          : 'Telecomandă'
-                                        : 'NU'}
-                                    </TableCell>{' '}
-                                  </TableRow>
-                                </TableBody>
-                              </Table>
-                              <Accordion>
-                                <AccordionSummary
-                                  expandIcon={<ExpandMoreIcon />}
-                                >
-                                  Mențiuni
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                  {product.mentiuni
-                                    ? product.mentiuni
-                                    : 'Nu exista mențiuni'}
-                                </AccordionDetails>
-                              </Accordion>
-                            </AccordionDetails>
-                          </Accordion>
+                      {product.bandaSnur !== undefined &&
+                      product.balcon !== undefined &&
+                      product.actionareInterior !== undefined &&
+                      product.tipMotor !== undefined &&
+                      product.actionareMotor !== undefined ? (
+                        <TableCell align="center">
+                          <TableCell>
+                            <Accordion>
+                              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                Detalii produs
+                              </AccordionSummary>
+                              <AccordionDetails>
+                                <Table>
+                                  <TableHead>
+                                    <TableRow>
+                                      <TableCell align="left">Balcon</TableCell>
+                                      <TableCell align="left">
+                                        Actionare
+                                      </TableCell>
+                                      <TableCell align="left">Manual</TableCell>
+                                      <TableCell align="left">
+                                        Tip Motor
+                                      </TableCell>
+                                      <TableCell align="left">
+                                        Act. Motor
+                                      </TableCell>
+                                    </TableRow>
+                                  </TableHead>
+                                  <TableBody>
+                                    <TableRow
+                                      sx={{ textTransform: 'uppercase' }}
+                                    >
+                                      <TableCell>
+                                        {product.balcon ? 'DA' : 'NU'}
+                                      </TableCell>
+                                      <TableCell>
+                                        {product.actionareInterior}
+                                      </TableCell>
+                                      <TableCell>
+                                        {product.bandaSnur.trim() !== ''
+                                          ? product.bandaSnur
+                                          : 'NU'}
+                                      </TableCell>
+                                      <TableCell>
+                                        {product.tipMotor.trim() !== ''
+                                          ? product.tipMotor
+                                          : 'NU'}
+                                      </TableCell>
+                                      <TableCell>
+                                        {product.actionareMotor.trim() !== ''
+                                          ? ['68', '71', '80', '85'].includes(
+                                              product.actionareMotor
+                                            )
+                                            ? 'Întrerupător'
+                                            : 'Telecomandă'
+                                          : 'NU'}
+                                      </TableCell>{' '}
+                                    </TableRow>
+                                  </TableBody>
+                                </Table>
+                                <Accordion>
+                                  <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                  >
+                                    Mențiuni
+                                  </AccordionSummary>
+                                  <AccordionDetails>
+                                    {product.mentiuni
+                                      ? product.mentiuni
+                                      : 'Nu exista mențiuni'}
+                                  </AccordionDetails>
+                                </Accordion>
+                              </AccordionDetails>
+                            </Accordion>
+                          </TableCell>
                         </TableCell>
-                      </TableCell>
+                      ) : (
+                        <TableCell align="center">
+                          {product.distantier ? 'DA' : 'NU'}
+                        </TableCell>
+                      )}
                       <TableCell align="right">{product.pret} EUR</TableCell>
                       <TableCell />
                     </TableRow>
-                  ))}
-                </TableBody>{' '}
-              </Table>
+                  </TableBody>{' '}
+                </Table>
+              ))}
             </TableContainer>
             <Typography
               variant="h6"
