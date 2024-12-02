@@ -121,74 +121,80 @@ export default function Layout({ children }) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{ ...(open && { display: 'none' }), color: '#06386a' }}
-            >
-              <MenuIcon />
-            </IconButton>
-            {!open ? (
-              <Typography
-                sx={{ color: '#06386a' }}
-                variant="h6"
-                noWrap
-                component="div"
+      {userInfo ? (
+        <AppBar position="fixed" open={open}>
+          <Toolbar
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{ ...(open && { display: 'none' }), color: '#06386a' }}
               >
-                AmonRollotechnik
-              </Typography>
-            ) : (
-              ''
-            )}
-          </Box>
-          <Box>
-            {userInfo ? (
-              <React.Fragment>
+                <MenuIcon />
+              </IconButton>
+              {!open ? (
+                <Typography
+                  sx={{ color: '#06386a' }}
+                  variant="h6"
+                  noWrap
+                  component="div"
+                >
+                  AmonRollotechnik
+                </Typography>
+              ) : (
+                ''
+              )}
+            </Box>
+            <Box>
+              {userInfo ? (
+                <React.Fragment>
+                  <Button
+                    sx={{ color: '#06386a' }}
+                    onClick={handleMeniuUtilizatorOpen}
+                  >
+                    {userInfo.name}
+                  </Button>
+                  <Menu
+                    anchorEl={meniuUtilizator}
+                    open={Boolean(meniuUtilizator)}
+                    onClose={handleMeniuUtilizatorClose}
+                  >
+                    {userInfo.isAdmin ? (
+                      <MenuItem onClick={createAccountHandler}>
+                        Crează cont
+                      </MenuItem>
+                    ) : (
+                      ''
+                    )}
+                    <MenuItem onClick={singoutHandler}>
+                      Deconectează-te
+                    </MenuItem>
+                  </Menu>
+                </React.Fragment>
+              ) : (
                 <Button
                   sx={{ color: '#06386a' }}
-                  onClick={handleMeniuUtilizatorOpen}
+                  component={Link}
+                  to="/signin"
+                  color="primary"
                 >
-                  {userInfo.name}
+                  Conecteaza-te
                 </Button>
-                <Menu
-                  anchorEl={meniuUtilizator}
-                  open={Boolean(meniuUtilizator)}
-                  onClose={handleMeniuUtilizatorClose}
-                >
-                  {userInfo.isAdmin ? (
-                    <MenuItem onClick={createAccountHandler}>
-                      Crează cont
-                    </MenuItem>
-                  ) : (
-                    ''
-                  )}
-                  <MenuItem onClick={singoutHandler}>Deconectează-te</MenuItem>
-                </Menu>
-              </React.Fragment>
-            ) : (
-              <Button
-                sx={{ color: '#06386a' }}
-                component={Link}
-                to="/signin"
-                color="primary"
-              >
-                Conecteaza-te
-              </Button>
-            )}
-          </Box>
-        </Toolbar>
-      </AppBar>
+              )}
+            </Box>
+          </Toolbar>
+        </AppBar>
+      ) : (
+        ' '
+      )}
       <Drawer
         sx={{
           width: drawerWidth,
@@ -707,6 +713,7 @@ export default function Layout({ children }) {
           </ListItem>
         </List>
       </Drawer>
+
       <Main open={open}>{children} </Main>
     </Box>
   );
